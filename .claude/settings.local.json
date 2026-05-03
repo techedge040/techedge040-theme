@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "Bash(Get-ChildItem -Path . -Directory)",
-      "Bash(Select-Object Name)"
+      "Bash(Select-Object Name)",
+      "mcp__claude_ai_Shopify__graphql_query",
+      "Bash(shopify whoami *)",
+      "Bash(shopify auth *)"
     ]
   }
 }
