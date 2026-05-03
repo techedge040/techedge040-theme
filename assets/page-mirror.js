@@ -1,8 +1,10 @@
 import { Component } from '@theme/component';
 
 /**
- * Page Mirror — fetches a same-store URL, parses its Shopify sections and
- * renders each one as a scaled visual preview card with block metadata.
+ * Page Mirror — fetches any URL (same-store or external), parses its Shopify
+ * sections and renders each one as a scaled visual preview card with block
+ * metadata. Cross-origin requests are automatically retried via the configured
+ * proxy URL.
  *
  * @typedef {object} Refs
  * @property {HTMLInputElement} urlInput
@@ -11,7 +13,7 @@ import { Component } from '@theme/component';
  */
 
 class PageMirrorComponent extends Component {
-  /** @type {Map<string, {html: string, stylesheets: string}>} */
+  /** @type {Map<string, {html: string, stylesheets: string, baseHref: string}>} */
   #sectionData = new Map();
 
   connectedCallback() {
@@ -40,18 +42,24 @@ class PageMirrorComponent extends Component {
 
     if (input && input.value !== url) input.value = url;
 
+    let parsedUrl;
     try {
-      const response = await fetch(url, { credentials: 'same-origin' });
+      parsedUrl = new URL(url);
+    } catch {
+      this.#showStatus('Ongeldige URL — voer een volledige URL in die begint met https://.', 'error');
+      output.removeAttribute('data-loading');
+      return;
+    }
 
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} — ${response.statusText}`);
-      }
+    const baseHref = parsedUrl.origin;
 
+    try {
+      const { response, viaProxy } = await this.#fetchWithFallback(url);
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
 
       const pageTitle = doc.title;
-      const rawSections = [...doc.querySelectorAll('[id^="shopify-section-"]')];
+      const rawSections = [...doc.querySelectorAll('[id^=”shopify-section-”]')];
 
       if (!rawSections.length) {
         this.#showStatus('Geen Shopify-secties gevonden op deze pagina.', 'info');
@@ -66,11 +74,11 @@ class PageMirrorComponent extends Component {
         const clone = /** @type {Element} */ (sectionEl.cloneNode(true));
 
         for (const script of clone.querySelectorAll('script')) script.remove();
-        for (const el of clone.querySelectorAll('[style*="display:none"],[hidden]')) {
+        for (const el of clone.querySelectorAll('[style*=”display:none”],[hidden]')) {
           el.removeAttribute('hidden');
         }
 
-        this.#sectionData.set(id, { html: clone.outerHTML, stylesheets });
+        this.#sectionData.set(id, { html: clone.outerHTML, stylesheets, baseHref });
       }
 
       output.innerHTML = rawSections
@@ -79,16 +87,14 @@ class PageMirrorComponent extends Component {
 
       output.removeAttribute('data-loading');
       this.#hydratePreviews();
+
+      const proxyNote = viaProxy ? ' (via proxy)' : '';
       this.#showStatus(
-        `${rawSections.length} secties geladen van “${pageTitle}”`,
+        `${rawSections.length} secties geladen van “${pageTitle}”${proxyNote}`,
         'success'
       );
     } catch (err) {
-      const msg =
-        err instanceof TypeError
-          ? 'Kan de pagina niet laden. Zorg dat de URL van jouw eigen winkel is (zelfde domein).'
-          : `Fout: ${err.message}`;
-      this.#showStatus(msg, 'error');
+      this.#showStatus(err.message, 'error');
       output.removeAttribute('data-loading');
     }
   }
@@ -101,6 +107,50 @@ class PageMirrorComponent extends Component {
     status.textContent = message;
     status.dataset.statusType = type;
     status.removeAttribute('hidden');
+  }
+
+  /**
+   * Probeert de URL direct te fetchen. Bij een CORS-blokkade (TypeError) wordt
+   * automatisch opnieuw geprobeerd via de geconfigureerde proxy-URL.
+   *
+   * @param {string} url
+   * @returns {Promise<{response: Response, viaProxy: boolean}>}
+   */
+  async #fetchWithFallback(url) {
+    try {
+      const response = await fetch(url, { credentials: 'omit' });
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status} — ${response.statusText}`);
+      }
+      return { response, viaProxy: false };
+    } catch (directErr) {
+      if (!(directErr instanceof TypeError)) throw directErr;
+      // TypeError = CORS-blokkade — probeer via proxy
+    }
+
+    const proxyUrl = this.dataset.proxyUrl?.trim();
+    if (!proxyUrl) {
+      throw new Error(
+        'Cross-origin verzoek geblokkeerd door de browser. ' +
+        'Voeg een proxy-URL toe in de sectie-instellingen om externe URL\'s te ondersteunen.'
+      );
+    }
+
+    let proxied;
+    try {
+      proxied = await fetch(proxyUrl + encodeURIComponent(url));
+    } catch {
+      throw new Error(
+        'Zowel het directe verzoek als de proxy zijn mislukt. ' +
+        'Controleer de proxy-URL in de instellingen.'
+      );
+    }
+
+    if (!proxied.ok) {
+      throw new Error(`HTTP ${proxied.status} via proxy — ${proxied.statusText}`);
+    }
+
+    return { response: proxied, viaProxy: true };
   }
 
   #extractStylesheets(doc) {
@@ -215,6 +265,7 @@ class PageMirrorComponent extends Component {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=1440">
+<base href="${data.baseHref}/">
 ${data.stylesheets}
 <style>
   *, *::before, *::after { box-sizing: border-box; }

@@ -12,14 +12,18 @@
   {% if target_url != blank %}
     data-target-url="{{ target_url | escape }}"
   {% endif %}
+  {% if section.settings.proxy_url != blank %}
+    data-proxy-url="{{ section.settings.proxy_url | escape }}"
+  {% endif %}
 >
   <div class="page-mirror__toolbar">
     <div class="page-mirror__toolbar-intro">
       <h2 class="page-mirror__heading">Pagina Mirror</h2>
       <p class="page-mirror__intro">
-        Voer een URL van jouw winkel in. De tool laadt die pagina, splitst hem op
-        per sectie en toont elk onderdeel als een visuele kaart — inclusief de
-        juiste kleuren, stijlen en blokopbouw.
+        Voer een URL in — van jouw eigen winkel of een externe Shopify-store.
+        De tool laadt die pagina, splitst hem op per sectie en toont elk onderdeel
+        als een visuele kaart met de juiste kleuren, stijlen en blokopbouw.
+        Externe URL's worden automatisch via de proxy geladen.
       </p>
     </div>
 
@@ -54,7 +58,7 @@
         </button>
       </div>
       <p class="page-mirror__hint">
-        Werkt alleen voor pagina's van jouw eigen winkel (zelfde domein).
+        Zelfde domein werkt direct. Externe URL's verlopen automatisch via de proxy-instelling hieronder.
       </p>
     </div>
   </div>
@@ -369,7 +373,14 @@
       "type": "text",
       "id": "target_url",
       "label": "Pagina-URL",
-      "info": "Alleen URL's van jouw eigen winkel (zelfde domein) worden ondersteund."
+      "info": "Elke URL — eigen winkel of extern Shopify-domein."
+    },
+    {
+      "type": "text",
+      "id": "proxy_url",
+      "label": "Proxy-URL (externe domeinen)",
+      "default": "https://api.allorigins.win/raw?url=",
+      "info": "De doelpagina-URL wordt aan het einde van deze proxy-URL toegevoegd. Vervang door een eigen proxy (bijv. Cloudflare Worker) voor gebruik in productie."
     },
     {
       "type": "color_scheme",
