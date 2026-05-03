@@ -7,7 +7,7 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
- {
+{
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
@@ -18,8 +18,6 @@
           "type": "group",
           "name": "Join our email list",
           "settings": {
-            "link": "",
-            "open_in_new_tab": false,
             "content_direction": "column",
             "vertical_on_mobile": true,
             "horizontal_alignment": "flex-start",
@@ -43,11 +41,13 @@
             "border_width": 1,
             "border_opacity": 100,
             "border_radius": 0,
-            "placeholder": "",
             "toggle_overlay": false,
             "overlay_color": "#00000026",
             "overlay_style": "solid",
             "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
@@ -58,7 +58,7 @@
               "type": "text",
               "name": "Heading",
               "settings": {
-                "text": "<h2>Join our email list</h2>",
+                "text": "<h2>TechEdge040</h2>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -84,7 +84,7 @@
               "type": "text",
               "name": "Text",
               "settings": {
-                "text": "<p>Get exclusive deals and early access to new products.</p>",
+                "text": "<p>Wij bouwen effectieve webshops en e-commerce oplossingen voor ondernemers die willen groeien.</p>",
                 "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
@@ -116,8 +116,27 @@
           "type": "email-signup",
           "name": "Email Signup",
           "settings": {
-            "width": "fill"
-          }
+            "width": "fill",
+            "custom_width": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "heading": "Diensten",
+            "heading_preset": "h3",
+            "border_style": "all",
+            "border_width": 1,
+            "border_radius": 100,
+            "input_type_preset": "paragraph",
+            "style_class": "button",
+            "display_type": "text",
+            "label": "Shopify webshops",
+            "integrated_button": false,
+            "button_type_preset": "paragraph",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
@@ -127,22 +146,69 @@
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
-        "gap": 20,
-        "color_scheme": "scheme-5",
-        "padding-block-start": 36,
-        "padding-block-end": 36
+        "gap": 40,
+        "color_scheme": "scheme-footer-dark",
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
-    "utilities": {
+    "footer_utilities_KdTrtL": {
       "type": "footer-utilities",
+      "blocks": {
+        "footer_copyright_QwDgFn": {
+          "type": "footer-copyright",
+          "settings": {
+            "show_powered_by": true,
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "footer_policy_list_cjeh7m": {
+          "type": "footer-policy-list",
+          "settings": {
+            "font_size": "0.75rem",
+            "case": "none"
+          },
+          "blocks": {}
+        },
+        "social_links_kweRQB": {
+          "type": "social-links",
+          "settings": {
+            "facebook_url": "",
+            "instagram_url": "",
+            "youtube_url": "",
+            "tiktok_url": "",
+            "twitter_url": "",
+            "threads_url": "",
+            "linkedin_url": "",
+            "bluesky_url": "",
+            "snapchat_url": "",
+            "pinterest_url": "",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "footer_copyright_QwDgFn",
+        "footer_policy_list_cjeh7m",
+        "social_links_kweRQB"
+      ],
+      "name": "t:names.policies_and_links",
       "settings": {
         "section_width": "page-width",
         "gap": 24,
         "divider_thickness": 1,
-        "color_scheme": "scheme-5",
-        "padding-block-start": 12,
-        "padding-block-end": 16
-      },
+        "color_scheme": "scheme-1",
+        "padding-block-start": 20,
+        "padding-block-end": 20
+      }
+    },
+    "utilities": {
+      "type": "footer-utilities",
       "blocks": {
         "copyright": {
           "type": "footer-copyright",
@@ -150,35 +216,55 @@
             "show_powered_by": true,
             "font_size": "0.75rem",
             "case": "none"
-          }
+          },
+          "blocks": {}
         },
         "policy_list": {
           "type": "footer-policy-list",
           "settings": {
             "font_size": "0.75rem",
             "case": "none"
-          }
+          },
+          "blocks": {}
         },
         "social_icons": {
           "type": "social-links",
           "settings": {
             "facebook_url": "https://www.facebook.com",
             "instagram_url": "https://www.instagram.com",
+            "youtube_url": "https://www.youtube.com",
             "tiktok_url": "https://www.tiktok.com",
             "twitter_url": "https://www.twitter.com",
-            "youtube_url": "https://www.youtube.com"
-          }
+            "threads_url": "",
+            "linkedin_url": "",
+            "bluesky_url": "",
+            "snapchat_url": "",
+            "pinterest_url": "",
+            "tumblr_url": "",
+            "vimeo_url": "",
+            "custom_url": ""
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "copyright",
         "policy_list",
         "social_icons"
-      ]
+      ],
+      "settings": {
+        "section_width": "page-width",
+        "gap": 24,
+        "divider_thickness": 1,
+        "color_scheme": "scheme-5",
+        "padding-block-start": 12,
+        "padding-block-end": 16
+      }
     }
   },
   "order": [
     "footer",
+    "footer_utilities_KdTrtL",
     "utilities"
   ]
 }
