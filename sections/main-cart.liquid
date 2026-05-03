@@ -1,3 +1,8 @@
+{% if settings.lookbook_mode %}
+  <script>window.location.replace('{{ routes.root_url }}');</script>
+  <meta http-equiv="refresh" content="0;url={{ routes.root_url }}">
+{% endif %}
+
 {% capture cart_page_more_blocks_content %}
   <div class="cart-page__more-blocks">
     {%- content_for 'blocks' -%}

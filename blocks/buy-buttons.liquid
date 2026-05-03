@@ -368,8 +368,15 @@
     {% endif %}
   </local-pickup>
 {% endif %}
+{% endunless %}
 
 {% stylesheet %}
+  .lookbook-inquiry-button {
+    width: 100%;
+    padding-block: var(--padding-lg);
+    text-transform: var(--button-text-case-secondary);
+  }
+
   .buy-buttons-block {
     --buy-button-preferred-width: 185px;
 

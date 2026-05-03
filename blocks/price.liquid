@@ -34,6 +34,7 @@
   endcapture
 %}
 
+{% if settings.lookbook_mode and settings.lookbook_show_prices == false %}{% else %}
 <product-price
   class="text-block {{ text_block_classes }} text-{{ block_settings.alignment }} {{ block_settings.type_preset | default: 'paragraph' }} spacing-style"
   data-block-id="{{ block.id }}"
@@ -81,6 +82,7 @@
     </div>
   {%- endif -%}
 </product-price>
+{% endif %}
 
 {% # theme-check-disable %}
 {% stylesheet %}

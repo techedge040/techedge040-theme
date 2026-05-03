@@ -22,7 +22,7 @@
 
 {% liquid
   assign has_quick_add = false
-  if settings.quick_add and product.available
+  if settings.quick_add and product.available and settings.lookbook_mode == false
     assign has_quick_add = true
   endif
 
