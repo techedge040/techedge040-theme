@@ -11,6 +11,7 @@
   "sections": {
     "te_hero_Vayw6B": {
       "type": "te-hero",
+      "disabled": true,
       "name": "TE Hero",
       "settings": {
         "badge_text": "Eindhoven — heel Nederland",
