@@ -5,7 +5,9 @@
       "Bash(Select-Object Name)",
       "mcp__claude_ai_Shopify__graphql_query",
       "Bash(shopify whoami *)",
-      "Bash(shopify auth *)"
+      "Bash(shopify auth *)",
+      "Bash(shopify theme *)",
+      "mcp__claude_ai_Shopify__get-shop-info"
     ]
   }
 }
