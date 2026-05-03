@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "page-mirror": {
+      "type": "page-mirror",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "target_url": ""
+      }
+    }
+  },
+  "order": ["page-mirror"]
+}

@@ -1,0 +1,388 @@
+<script type="module" src="{{ 'page-mirror.js' | asset_url }}"></script>
+
+{% liquid
+  assign target_url = section.settings.target_url | strip
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<page-mirror-component
+  class="page-mirror section color-{{ section.settings.color_scheme }}"
+  data-section-id="{{ section.id }}"
+  {% if target_url != blank %}
+    data-target-url="{{ target_url | escape }}"
+  {% endif %}
+>
+  <div class="page-mirror__toolbar">
+    <div class="page-mirror__toolbar-intro">
+      <h2 class="page-mirror__heading">Pagina Mirror</h2>
+      <p class="page-mirror__intro">
+        Voer een URL van jouw winkel in. De tool laadt die pagina, splitst hem op
+        per sectie en toont elk onderdeel als een visuele kaart — inclusief de
+        juiste kleuren, stijlen en blokopbouw.
+      </p>
+    </div>
+
+    <div class="page-mirror__input-group">
+      <label
+        class="page-mirror__label"
+        for="pm-url-{{ section.id }}"
+      >
+        Pagina-URL
+      </label>
+      <div class="page-mirror__input-row">
+        <input
+          type="url"
+          id="pm-url-{{ section.id }}"
+          class="page-mirror__input"
+          ref="urlInput"
+          placeholder="https://{{ shop.permanent_domain }}/pages/voorbeeld"
+          value="{{ target_url | escape }}"
+          on:keydown="/handleKeydown"
+          autocomplete="off"
+          spellcheck="false"
+        >
+        <button
+          class="button page-mirror__load-btn"
+          type="button"
+          on:click="/handleLoad"
+        >
+          <span class="svg-wrapper" aria-hidden="true">
+            {{- 'icon-arrow-right.svg' | inline_asset_content -}}
+          </span>
+          Laden
+        </button>
+      </div>
+      <p class="page-mirror__hint">
+        Werkt alleen voor pagina's van jouw eigen winkel (zelfde domein).
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="page-mirror__status"
+    ref="status"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+    hidden
+  ></div>
+
+  <div
+    class="page-mirror__output"
+    ref="output"
+  >
+    <div class="page-mirror__empty">
+      <p>Voer een URL in en klik op <strong>Laden</strong> om de secties te bekijken.</p>
+    </div>
+  </div>
+</page-mirror-component>
+
+{% stylesheet %}
+  /* ── Layout ───────────────────────────────────────────────────────────── */
+  .page-mirror {
+    min-height: 100dvh;
+    padding: var(--padding-2xl) var(--padding-xl);
+
+    @media screen and (min-width: 750px) {
+      padding: var(--padding-2xl) var(--padding-3xl);
+    }
+  }
+
+  /* ── Toolbar ─────────────────────────────────────────────────────────── */
+  .page-mirror__toolbar {
+    max-width: 760px;
+    margin-bottom: var(--margin-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xl);
+  }
+
+  .page-mirror__heading {
+    margin-block-end: var(--margin-xs);
+  }
+
+  .page-mirror__intro {
+    margin: 0;
+    color: var(--color-foreground-secondary);
+    font-size: var(--font-size--sm);
+    max-width: 56ch;
+  }
+
+  .page-mirror__input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+  }
+
+  .page-mirror__label {
+    font-size: var(--font-size--sm);
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .page-mirror__input-row {
+    display: flex;
+    gap: var(--gap-sm);
+  }
+
+  .page-mirror__input {
+    flex: 1;
+    min-width: 0;
+    height: var(--height-inputs, 44px);
+    padding-inline: var(--padding-md);
+    border: var(--style-border-width) solid var(--color-border);
+    border-radius: var(--style-border-radius-inputs);
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-size: var(--font-size--sm);
+    font-family: monospace;
+
+    &:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 1px;
+    }
+  }
+
+  .page-mirror__load-btn {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    padding-inline: var(--padding-xl);
+  }
+
+  .page-mirror__hint {
+    margin: 0;
+    font-size: var(--font-size--xs);
+    color: var(--color-foreground-secondary);
+  }
+
+  /* ── Status bar ───────────────────────────────────────────────────────── */
+  .page-mirror__status {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-sm);
+    padding: var(--padding-md) var(--padding-lg);
+    margin-bottom: var(--margin-xl);
+    border-radius: var(--style-border-radius-inputs);
+    font-size: var(--font-size--sm);
+    background: rgb(var(--color-foreground-rgb) / 0.05);
+    border: var(--style-border-width) solid var(--color-border);
+    max-width: 760px;
+
+    &[data-status-type='success'] {
+      background: rgb(0 160 80 / 0.08);
+      border-color: rgb(0 160 80 / 0.3);
+      color: var(--color-foreground);
+    }
+
+    &[data-status-type='error'] {
+      background: rgb(200 30 30 / 0.07);
+      border-color: rgb(200 30 30 / 0.3);
+      color: var(--color-foreground);
+    }
+
+    &[data-status-type='loading']::before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--color-border);
+      border-top-color: var(--color-primary);
+      border-radius: 50%;
+      animation: pm-spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+  }
+
+  @keyframes pm-spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ── Output grid ──────────────────────────────────────────────────────── */
+  .page-mirror__output {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-2xl);
+
+    &[data-loading] {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+  }
+
+  .page-mirror__empty {
+    color: var(--color-foreground-secondary);
+    font-size: var(--font-size--sm);
+    padding: var(--padding-2xl) 0;
+  }
+
+  /* ── Section cards ────────────────────────────────────────────────────── */
+  .mirror-section {
+    border: var(--style-border-width) solid var(--color-border);
+    border-radius: var(--style-border-radius-popover, 12px);
+    overflow: hidden;
+    background: var(--color-background);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.06);
+  }
+
+  .mirror-section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+    padding: var(--padding-md) var(--padding-xl);
+    background: rgb(var(--color-foreground-rgb) / 0.03);
+    border-bottom: var(--style-border-width) solid var(--color-border);
+  }
+
+  .mirror-section__meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--gap-sm);
+  }
+
+  .mirror-section__type {
+    font-size: var(--font-size--sm);
+    font-family: var(--font-body--family), monospace;
+    font-weight: 700;
+    color: var(--color-foreground);
+  }
+
+  /* ── Badges ───────────────────────────────────────────────────────────── */
+  .mirror-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px var(--padding-sm);
+    border-radius: 20px;
+    font-size: var(--font-size--2xs);
+    border: var(--style-border-width) solid var(--color-border);
+    color: var(--color-foreground-secondary);
+    line-height: 1.6;
+    white-space: nowrap;
+  }
+
+  .mirror-badge--scheme {
+    font-family: monospace;
+  }
+
+  .mirror-badge__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+
+  /* ── Section actions ──────────────────────────────────────────────────── */
+  .mirror-section__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-md);
+    margin-inline-start: auto;
+  }
+
+  .mirror-section__id {
+    font-family: monospace;
+    font-size: var(--font-size--2xs);
+    color: var(--color-foreground-secondary);
+    opacity: 0.7;
+  }
+
+  .mirror-section__copy {
+    font-size: var(--font-size--2xs);
+    padding: var(--padding-xs) var(--padding-md);
+    height: auto;
+    min-height: 32px;
+  }
+
+  /* ── Preview iframe ───────────────────────────────────────────────────── */
+  .mirror-section__preview-wrap {
+    position: relative;
+    overflow: hidden;
+    background: repeating-conic-gradient(
+      rgb(var(--color-foreground-rgb) / 0.04) 0%  25%,
+      transparent 0% 50%
+    ) 0 0 / 16px 16px;
+    min-height: 100px;
+  }
+
+  .mirror-section__iframe {
+    border: none;
+    display: block;
+  }
+
+  /* ── Blocks list ──────────────────────────────────────────────────────── */
+  .mirror-section__blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap-xs);
+    padding: var(--padding-md) var(--padding-xl);
+    border-top: var(--style-border-width) solid var(--color-border);
+    background: rgb(var(--color-foreground-rgb) / 0.02);
+  }
+
+  .mirror-block {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-2xs);
+    padding: 3px var(--padding-sm);
+    border-radius: 20px;
+    border: var(--style-border-width) solid var(--color-border);
+    background: var(--color-background);
+    font-size: var(--font-size--xs);
+    max-width: 200px;
+    overflow: hidden;
+  }
+
+  .mirror-block__type {
+    font-family: monospace;
+    font-size: var(--font-size--2xs);
+    color: var(--color-primary);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .mirror-block__label {
+    color: var(--color-foreground-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Page Mirror",
+  "tag": "div",
+  "class": "shopify-section--page-mirror",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Voer een URL van jouw winkel in. De tool haalt die pagina op, verdeelt hem per Shopify-sectie en toont elk onderdeel als een visuele preview-kaart met blokopbouw, kleurschema en stijlen."
+    },
+    {
+      "type": "text",
+      "id": "target_url",
+      "label": "Pagina-URL",
+      "info": "Alleen URL's van jouw eigen winkel (zelfde domein) worden ondersteund."
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Mirror",
+      "category": "Gereedschappen"
+    }
+  ]
+}
+{% endschema %}
