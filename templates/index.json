@@ -9,6 +9,23 @@
  */
 {
   "sections": {
+    "te_hero_Vayw6B": {
+      "type": "te-hero",
+      "name": "TE Hero",
+      "settings": {
+        "badge_text": "Eindhoven — heel Nederland",
+        "heading": "Webshops die werken. <em>Echt.</em>",
+        "lead_text": "Wij zijn TechEdge040 — jouw directe partner voor Shopify en Lightspeed. Van nieuwbouw tot slimme AI-integraties: wij helpen je groeien. Persoonlijk contact, korte lijnen, echte resultaten.",
+        "cta_primary_label": "Gratis kennismaking →",
+        "cta_primary_url": "",
+        "cta_outline_label": "Bekijk diensten",
+        "cta_outline_url": "",
+        "stat1_number": "99+",
+        "stat1_label": "Projecten",
+        "stat2_number": "8jr",
+        "stat2_label": "Ervaring"
+      }
+    },
     "te_platforms": {
       "type": "te-platforms",
       "blocks": {
@@ -468,26 +485,10 @@
         "response_time": "Binnen 1 werkdag",
         "whatsapp_url": "https://wa.me/31631253596"
       }
-    },
-    "te_hero_Vayw6B": {
-      "type": "te-hero",
-      "name": "TE Hero",
-      "settings": {
-        "badge_text": "Eindhoven — heel Nederland",
-        "heading": "Webshops die werken. <em>Echt.</em>",
-        "lead_text": "Wij zijn TechEdge040 — jouw directe partner voor Shopify en Lightspeed. Van nieuwbouw tot slimme AI-integraties: wij helpen je groeien. Persoonlijk contact, korte lijnen, echte resultaten.",
-        "cta_primary_label": "Gratis kennismaking →",
-        "cta_primary_url": "",
-        "cta_outline_label": "Bekijk diensten",
-        "cta_outline_url": "",
-        "stat1_number": "99+",
-        "stat1_label": "Projecten",
-        "stat2_number": "8jr",
-        "stat2_label": "Ervaring"
-      }
     }
   },
   "order": [
+    "te_hero_Vayw6B",
     "te_platforms",
     "te_stats",
     "te_services_shopify",
@@ -497,7 +498,6 @@
     "te_about",
     "te_werkwijze",
     "te_cta_banner",
-    "te_contact",
-    "te_hero_Vayw6B"
+    "te_contact"
   ]
 }
