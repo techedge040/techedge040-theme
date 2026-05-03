@@ -99,6 +99,7 @@
     </div>
   {% endif %}
 
+  {% unless settings.lookbook_mode %}
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     <script
       src="{{ 'cart-drawer.js' | asset_url }}"
@@ -234,6 +235,7 @@
       {{ cart_icon }}
     </a>
   {% endif %}
+  {% endunless %}
 </header-actions>
 
 {% stylesheet %}

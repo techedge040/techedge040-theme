@@ -28,6 +28,7 @@
   endif
 %}
 
+{% unless settings.lookbook_mode %}
 <quick-add-component
   class="quick-add color-{{ color_scheme }} "
   ref="quickAdd"
@@ -112,6 +113,7 @@
     {%- endform -%}
   </product-form-component>
 </quick-add-component>
+{% endunless %}
 
 {% stylesheet %}
   /* Quick Add */

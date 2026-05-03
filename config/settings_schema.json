@@ -2287,5 +2287,52 @@
         "default": "equal-width-buttons"
       }
     ]
+  },
+  {
+    "name": "Lookbook Mode",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Convert your store into a digital lookbook or catalog. All commerce functionality — cart, add-to-cart, checkout, and quick-add — is hidden globally."
+      },
+      {
+        "type": "checkbox",
+        "id": "lookbook_mode",
+        "label": "Enable Lookbook Mode",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "lookbook_show_prices",
+        "label": "Show prices",
+        "info": "Display product prices even in Lookbook Mode.",
+        "default": true,
+        "visible_if": "{{ settings.lookbook_mode }}"
+      },
+      {
+        "type": "header",
+        "content": "Inquiry button",
+        "visible_if": "{{ settings.lookbook_mode }}"
+      },
+      {
+        "type": "paragraph",
+        "content": "Optional button shown in place of the buy buttons and on product cards.",
+        "visible_if": "{{ settings.lookbook_mode }}"
+      },
+      {
+        "type": "text",
+        "id": "lookbook_cta_label",
+        "label": "Button label",
+        "default": "Request information",
+        "visible_if": "{{ settings.lookbook_mode }}"
+      },
+      {
+        "type": "url",
+        "id": "lookbook_cta_url",
+        "label": "Button URL",
+        "info": "Link to a contact or inquiry page. Leave empty to hide the button.",
+        "visible_if": "{{ settings.lookbook_mode }}"
+      }
+    ]
   }
 ]

@@ -38,7 +38,16 @@
   class="buy-buttons-block buy-buttons-block--{{ block.id }}"
   {{ block.shopify_attributes }}
 >
-  {%- if product != blank -%}
+  {%- if settings.lookbook_mode -%}
+    {%- if settings.lookbook_cta_url != blank -%}
+      <a
+        href="{{ settings.lookbook_cta_url }}"
+        class="button button-secondary lookbook-inquiry-button"
+      >
+        {{- settings.lookbook_cta_label | default: 'Request information' -}}
+      </a>
+    {%- endif -%}
+  {%- elsif product != blank -%}
     {%- assign product_form_id = 'BuyButtons-ProductForm-' | append: section.id -%}
     <product-form-component
       data-section-id="{{ section.id }}"
@@ -245,6 +254,7 @@
   {%- endif -%}
 </span>
 
+{% unless settings.lookbook_mode %}
 {% if block_settings.show_pickup_availability %}
   <script
     src="{{ 'local-pickup.js' | asset_url }}"

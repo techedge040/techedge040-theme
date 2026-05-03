@@ -18,6 +18,7 @@
   endif
 -%}
 
+{% unless settings.lookbook_mode %}
 <add-to-cart-component
   ref="addToCartButtonContainer"
   data-product-variant-media="{{ product_variant_media }}"
@@ -66,3 +67,4 @@
     </span>
   </button>
 </add-to-cart-component>
+{% endunless %}
