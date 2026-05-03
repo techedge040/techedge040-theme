@@ -12,7 +12,7 @@
     "page-mirror": {
       "type": "page-mirror",
       "settings": {
-        "target_url": "",
+        "target_url": "https://techedge040.nl",
         "color_scheme": "scheme-1"
       }
     }
