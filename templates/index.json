@@ -469,7 +469,7 @@
         "whatsapp_url": "https://wa.me/31631253596"
       }
     },
-    "te_hero_ig9iMf": {
+    "te_hero_Vayw6B": {
       "type": "te-hero",
       "name": "TE Hero",
       "settings": {
@@ -488,7 +488,6 @@
     }
   },
   "order": [
-    "te_hero_ig9iMf",
     "te_platforms",
     "te_stats",
     "te_services_shopify",
@@ -498,6 +497,7 @@
     "te_about",
     "te_werkwijze",
     "te_cta_banner",
-    "te_contact"
+    "te_contact",
+    "te_hero_Vayw6B"
   ]
 }

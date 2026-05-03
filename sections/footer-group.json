@@ -39,12 +39,18 @@
           }
         }
       },
-      "block_order": ["col_shopify", "col_lightspeed", "col_diensten"],
+      "block_order": [
+        "col_shopify",
+        "col_lightspeed",
+        "col_diensten"
+      ],
       "settings": {
         "tagline": "Jouw e-commerce partner vanuit Eindhoven. Shopify, Lightspeed, migraties, AI en meer. Persoonlijk, direct en betrokken.",
         "show_partner_labels": true
       }
     }
   },
-  "order": ["te_footer"]
+  "order": [
+    "te_footer"
+  ]
 }
