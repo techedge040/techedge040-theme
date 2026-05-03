@@ -9,84 +9,114 @@
  */
 {
   "sections": {
-    "te_hero_LAdEJV": {
-      "type": "te-hero",
-      "name": "TE Hero",
-      "settings": {
-        "badge_text": "Eindhoven — heel Nederland",
-        "heading": "Webshops die werken. <em>Echt.</em>",
-        "lead_text": "Wij zijn TechEdge040 — jouw directe partner voor Shopify en Lightspeed. Van nieuwbouw tot slimme AI-integraties: wij helpen je groeien. Persoonlijk contact, korte lijnen, echte resultaten.",
-        "cta_primary_label": "Gratis kennismaking →",
-        "cta_primary_url": "",
-        "cta_outline_label": "Bekijk diensten",
-        "cta_outline_url": "",
-        "stat1_number": "99+",
-        "stat1_label": "Projecten",
-        "stat2_number": "8jr",
-        "stat2_label": "Ervaring"
-      }
-    },
-    "te_platforms_VhiUap": {
-      "type": "te-platforms",
+    "hero_H7FcLB": {
+      "type": "hero",
       "blocks": {
-        "platform_h9FpjR": {
-          "type": "platform",
+        "text_YPmT6g": {
+          "type": "text",
           "settings": {
-            "platform_name": "Shopify"
-          }
+            "text": "<h1>Nieuw binnen</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "platform_BmyqQL": {
-          "type": "platform",
+        "text_jJNxtB": {
+          "type": "text",
           "settings": {
-            "platform_name": "Lightspeed"
-          }
+            "text": "<p>Met zorg gemaakt en onvoorwaardelijk geliefd bij onze klanten.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
-        "platform_JYwphe": {
-          "type": "platform",
+        "button_nwaBqQ": {
+          "type": "button",
+          "name": "t:names.button",
           "settings": {
-            "platform_name": "WooCommerce"
-          }
-        },
-        "platform_YyJjV4": {
-          "type": "platform",
-          "settings": {
-            "platform_name": "WordPress"
-          }
-        },
-        "platform_YP3q9V": {
-          "type": "platform",
-          "settings": {
-            "platform_name": "Mollie"
-          }
-        },
-        "platform_8TnQpk": {
-          "type": "platform",
-          "settings": {
-            "platform_name": "Klaviyo"
-          }
-        },
-        "platform_Cg8HAb": {
-          "type": "platform",
-          "settings": {
-            "platform_name": "Exact Online"
-          }
+            "label": "Shop nu",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "platform_h9FpjR",
-        "platform_BmyqQL",
-        "platform_JYwphe",
-        "platform_YyJjV4",
-        "platform_YP3q9V",
-        "platform_8TnQpk",
-        "platform_Cg8HAb"
+        "text_YPmT6g",
+        "text_jJNxtB",
+        "button_nwaBqQ"
       ],
-      "name": "TE Platforms Bar",
-      "settings": {}
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "media_type_2": "image",
+        "stack_media_on_mobile": false,
+        "custom_mobile_media": false,
+        "media_type_1_mobile": "image",
+        "media_type_2_mobile": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
     }
   },
   "order": [
-    "te_hero_LAdEJV",
-    "te_platforms_VhiUap"
+    "hero_H7FcLB"
   ]
 }
