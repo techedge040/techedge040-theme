@@ -1,0 +1,50 @@
+<div class="te-stat-block te-reveal"
+  {{ block.shopify_attributes }}
+  style="padding-block-start:{{ block.settings.padding_top }}px;padding-block-end:{{ block.settings.padding_bottom }}px;"
+>
+  <div class="te-stat-n">{{ block.settings.number }}</div>
+  <div class="te-stat-l">{{ block.settings.label }}</div>
+</div>
+
+{% stylesheet %}
+.te-stat-block {
+  background: var(--te-orange-bg);
+  border: 1px solid var(--te-orange-bd);
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: transform .2s, border-color .2s;
+}
+.te-stat-block:hover { transform: translateY(-2px); border-color: var(--te-orange); }
+.te-stat-n {
+  font-family: var(--te-display);
+  font-weight: 900;
+  font-size: clamp(36px,5vw,54px);
+  color: var(--te-orange);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.te-stat-l {
+  font-family: var(--te-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--te-faint);
+  margin-top: 10px;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Stat",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "number", "label": "Getal", "default": "99+" },
+    { "type": "text", "id": "label", "label": "Label", "default": "Projecten afgerond" },
+    { "type": "header", "content": "Afstand" },
+    { "type": "range", "id": "padding_top", "label": "Ruimte boven", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Ruimte onder", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 }
+  ]
+}
+{% endschema %}

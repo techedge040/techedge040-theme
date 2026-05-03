@@ -1,0 +1,44 @@
+<div class="te-pill te-reveal"
+  {{ block.shopify_attributes }}
+  style="padding-block-start:{{ block.settings.padding_top }}px;padding-block-end:{{ block.settings.padding_bottom }}px;"
+>
+  <span class="te-pill-dot" aria-hidden="true"></span>
+  {{ block.settings.platform_name }}
+</div>
+
+{% stylesheet %}
+.te-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid var(--te-border-lt);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-family: var(--te-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--te-muted);
+  white-space: nowrap;
+}
+.te-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--te-orange);
+  flex-shrink: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Platform",
+  "tag": null,
+  "settings": [
+    { "type": "text", "id": "platform_name", "label": "Platform naam", "default": "Shopify" },
+    { "type": "header", "content": "Afstand" },
+    { "type": "range", "id": "padding_top", "label": "Ruimte boven", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Ruimte onder", "min": 0, "max": 80, "step": 4, "unit": "px", "default": 0 }
+  ]
+}
+{% endschema %}
