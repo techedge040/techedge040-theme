@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Shopify CLI: Login",
+            "type": "shell",
+            "command": "shopify login --store <your-store>.myshopify.com",
+            "problemMatcher": []
+        },
+        {
+            "label": "Shopify Theme: Serve",
+            "type": "shell",
+            "command": "shopify theme serve --path .",
+            "problemMatcher": []
+        },
+        {
+            "label": "Shopify Theme: Push",
+            "type": "shell",
+            "command": "shopify theme push --path .",
+            "problemMatcher": []
+        },
+        {
+            "label": "Shopify Theme: Pull",
+            "type": "shell",
+            "command": "shopify theme pull --path .",
+            "problemMatcher": []
+        }
+    ]
+}
