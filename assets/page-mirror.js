@@ -16,6 +16,18 @@ class PageMirrorComponent extends Component {
   /** @type {Map<string, {html: string, stylesheets: string, baseHref: string}>} */
   #sectionData = new Map();
 
+  /**
+   * Ingebouwde publieke CORS-proxies, in volgorde van voorkeur.
+   * De custom proxy uit de sectie-instellingen wordt altijd als eerste geprobeerd.
+   *
+   * @type {readonly string[]}
+   */
+  static #FALLBACK_PROXIES = [
+    'https://corsproxy.io/?',
+    'https://api.allorigins.win/raw?url=',
+    'https://api.codetabs.com/v1/proxy?quest=',
+  ];
+
   connectedCallback() {
     super.connectedCallback();
     const url = this.dataset.targetUrl;
@@ -54,7 +66,7 @@ class PageMirrorComponent extends Component {
     const baseHref = parsedUrl.origin;
 
     try {
-      const { response, viaProxy } = await this.#fetchWithFallback(url);
+      const { response, viaProxy, proxyUsed } = await this.#fetchWithFallback(url);
       const html = await response.text();
       const doc = new DOMParser().parseFromString(html, 'text/html');
 
@@ -88,7 +100,9 @@ class PageMirrorComponent extends Component {
       output.removeAttribute('data-loading');
       this.#hydratePreviews();
 
-      const proxyNote = viaProxy ? ' (via proxy)' : '';
+      const proxyNote = viaProxy
+        ? ` (via proxy: ${new URL(/** @type {string} */ (proxyUsed)).hostname})`
+        : '';
       this.#showStatus(
         `${rawSections.length} secties geladen van “${pageTitle}”${proxyNote}`,
         'success'
@@ -110,47 +124,51 @@ class PageMirrorComponent extends Component {
   }
 
   /**
-   * Probeert de URL direct te fetchen. Bij een CORS-blokkade (TypeError) wordt
-   * automatisch opnieuw geprobeerd via de geconfigureerde proxy-URL.
+   * Probeert de URL direct te fetchen. Bij een CORS-blokkade doorloopt het
+   * automatisch een keten van proxies: eerst de custom proxy uit de instellingen,
+   * dan de ingebouwde publieke fallbacks.
    *
    * @param {string} url
-   * @returns {Promise<{response: Response, viaProxy: boolean}>}
+   * @returns {Promise<{response: Response, viaProxy: boolean, proxyUsed: string | null}>}
    */
   async #fetchWithFallback(url) {
+    // 1. Directe poging — werkt voor zelfde domein en CORS-permissive externe sites
     try {
       const response = await fetch(url, { credentials: 'omit' });
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status} — ${response.statusText}`);
-      }
-      return { response, viaProxy: false };
+      if (response.ok) return { response, viaProxy: false, proxyUsed: null };
+      // Niet-OK maar wél bereikbaar → geen CORS-probleem, echte HTTP-fout
+      throw new Error(`HTTP ${response.status} — ${response.statusText}`);
     } catch (directErr) {
       if (!(directErr instanceof TypeError)) throw directErr;
-      // TypeError = CORS-blokkade — probeer via proxy
+      // TypeError = CORS-blokkade door browser → doorlopen naar proxy-keten
     }
 
-    const proxyUrl = this.dataset.proxyUrl?.trim();
-    if (!proxyUrl) {
-      throw new Error(
-        'Cross-origin verzoek geblokkeerd door de browser. ' +
-        'Voeg een proxy-URL toe in de sectie-instellingen om externe URL\'s te ondersteunen.'
-      );
+    // 2. Bouw proxy-keten: custom instelling eerst, daarna ingebouwde fallbacks
+    const customProxy = this.dataset.proxyUrl?.trim() ?? '';
+    const proxies = [
+      ...(customProxy ? [customProxy] : []),
+      ...PageMirrorComponent.#FALLBACK_PROXIES.filter((p) => p !== customProxy),
+    ];
+
+    /** @type {string[]} */
+    const errors = [];
+
+    for (const proxyUrl of proxies) {
+      try {
+        const response = await fetch(proxyUrl + encodeURIComponent(url), {
+          credentials: 'omit',
+        });
+        if (response.ok) return { response, viaProxy: true, proxyUsed: proxyUrl };
+        errors.push(`${new URL(proxyUrl).hostname}: HTTP ${response.status}`);
+      } catch {
+        errors.push(`${new URL(proxyUrl).hostname}: netwerk- of CORS-fout`);
+      }
     }
 
-    let proxied;
-    try {
-      proxied = await fetch(proxyUrl + encodeURIComponent(url));
-    } catch {
-      throw new Error(
-        'Zowel het directe verzoek als de proxy zijn mislukt. ' +
-        'Controleer de proxy-URL in de instellingen.'
-      );
-    }
-
-    if (!proxied.ok) {
-      throw new Error(`HTTP ${proxied.status} via proxy — ${proxied.statusText}`);
-    }
-
-    return { response: proxied, viaProxy: true };
+    throw new Error(
+      `Alle proxy-opties zijn mislukt:\n${errors.join('\n')}\n\n` +
+      'Voeg een eigen proxy toe in de sectie-instellingen, bijv. een Cloudflare Worker.'
+    );
   }
 
   #extractStylesheets(doc) {
