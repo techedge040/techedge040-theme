@@ -1,0 +1,205 @@
+<section class="te-werkwijze-section">
+  <div class="te-section te-werkwijze-grid">
+    <div class="te-reveal">
+      <div class="te-chip">{{ section.settings.chip_label }}</div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="te-werkwijze-lead">{{ section.settings.lead_text }}</p>
+      <div class="te-comm-grid">
+        <div class="te-comm-card">
+          <div class="te-cc-icon" aria-hidden="true">💬</div>
+          <div><strong>WhatsApp</strong><span>Snel berichtje sturen</span></div>
+        </div>
+        <div class="te-comm-card">
+          <div class="te-cc-icon" aria-hidden="true">📞</div>
+          <div><strong>Telefoon</strong><span>Even direct overleggen</span></div>
+        </div>
+        <div class="te-comm-card">
+          <div class="te-cc-icon" aria-hidden="true">✉️</div>
+          <div><strong>E-mail</strong><span>Uitgebreide vragen</span></div>
+        </div>
+        <div class="te-comm-card">
+          <div class="te-cc-icon" aria-hidden="true">🎫</div>
+          <div><strong>Ticketsysteem</strong><span>Alles netjes bijhouden</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="te-pillars te-reveal">
+      {%- for block in section.blocks -%}
+        <div class="te-pillar" {{ block.shopify_attributes }}>
+          <div class="te-p-icon" aria-hidden="true">{{ block.settings.icon_emoji }}</div>
+          <div>
+            <h4>{{ block.settings.title }}</h4>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.te-werkwijze-section {
+  background: #0f1a2e;
+  border-top: 1px solid var(--te-border);
+  border-bottom: 1px solid var(--te-border);
+  position: relative;
+  z-index: 1;
+}
+.te-werkwijze-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+@media(min-width:900px) {
+  .te-werkwijze-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 80px; }
+}
+.te-werkwijze-grid h2 {
+  font-family: var(--te-display);
+  font-size: clamp(24px,4vw,46px);
+  font-weight: 900;
+  color: var(--te-text);
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.te-werkwijze-grid h2 em {
+  font-style: italic;
+  color: var(--te-orange);
+}
+.te-werkwijze-lead {
+  font-family: var(--te-body);
+  font-size: clamp(15px,2vw,17px);
+  color: var(--te-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.te-comm-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+.te-comm-card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: var(--te-navy-card);
+  border: 1px solid var(--te-border);
+  border-radius: 9px;
+  padding: 14px;
+  transition: border-color .2s;
+}
+.te-comm-card:hover { border-color: var(--te-orange-bd); }
+.te-cc-icon { font-size: 22px; }
+.te-comm-card strong {
+  display: block;
+  font-family: var(--te-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--te-text);
+  margin-bottom: 2px;
+}
+.te-comm-card span {
+  font-family: var(--te-body);
+  font-size: 12px;
+  color: var(--te-muted);
+}
+.te-pillars {
+  display: flex;
+  flex-direction: column;
+}
+.te-pillar {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--te-border);
+}
+.te-pillar:last-child { border-bottom: none; }
+.te-p-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--te-orange-bg);
+  border: 1px solid var(--te-orange-bd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.te-pillar h4 {
+  font-family: var(--te-body);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--te-text);
+  margin-bottom: 5px;
+}
+.te-pillar p {
+  font-family: var(--te-body);
+  font-size: 14px;
+  color: var(--te-muted);
+  line-height: 1.7;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Werkwijze",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chip_label",
+      "label": "Chip label",
+      "default": "Hoe wij werken"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading (HTML toegestaan)",
+      "default": "Jouw communicatievoorkeur. <em>Onze aanpassing.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "lead_text",
+      "label": "Lead tekst",
+      "default": "Iedereen werkt anders. De ene ondernemer belt liever even op, de ander stuurt een appje tussendoor, sommigen willen alles netjes bijhouden in een ticketsysteem. Allemaal prima. Jij kiest hoe je contact opneemt — wij zorgen dat je altijd snel en goed geholpen wordt."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon_emoji",
+          "label": "Icoon emoji",
+          "default": "✅"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Direct contact, altijd"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Omschrijving",
+          "default": "Je belt, app't of mailt rechtstreeks met ons."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Werkwijze",
+      "blocks": [
+        { "type": "pillar", "settings": { "icon_emoji": "📞", "title": "Direct contact, altijd", "description": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden. Gewoon snel antwoord van mensen die jouw project door en door kennen." } },
+        { "type": "pillar", "settings": { "icon_emoji": "⚡", "title": "Korte lijnen, snelle beslissingen", "description": "We schakelen direct. Geen eindeloze goedkeuringstrajecten. Als er iets aangepast moet worden, doen we dat gewoon." } },
+        { "type": "pillar", "settings": { "icon_emoji": "🤝", "title": "Persoonlijk betrokken", "description": "We kennen jouw business — niet als dossier, maar echt. We signaleren proactief kansen en denken mee, ook na oplevering." } },
+        { "type": "pillar", "settings": { "icon_emoji": "💡", "title": "Transparant en eerlijk", "description": "Geen verkooppraatjes. We vertellen je precies wat verstandig is, ook als dat betekent dat we iets afraden." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,159 @@
+<section class="te-about-section" id="over-ons">
+  <div class="te-section te-about-grid">
+    <div class="te-reveal">
+      <div class="te-chip">{{ section.settings.chip_label }}</div>
+      <h2>{{ section.settings.heading }}</h2>
+      <div class="te-about-text">
+        {{ section.settings.body_text }}
+      </div>
+      <div style="margin-top:32px;">
+        <a href="{{ section.settings.cta_url }}" class="te-btn te-btn--primary">{{ section.settings.cta_label }}</a>
+      </div>
+    </div>
+    <div class="te-highlights">
+      {%- for block in section.blocks -%}
+        <div class="te-hl-card te-reveal" {{ block.shopify_attributes }}>
+          <div>
+            <h4>{{ block.settings.title }}</h4>
+            <p>{{ block.settings.description }}</p>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.te-about-section {
+  background: var(--te-navy);
+  position: relative;
+  z-index: 1;
+}
+.te-about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+@media(min-width:768px) {
+  .te-about-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; }
+}
+.te-about-grid h2 {
+  font-family: var(--te-display);
+  font-size: clamp(24px,4vw,46px);
+  font-weight: 900;
+  color: var(--te-text);
+  letter-spacing: -.02em;
+  margin-bottom: 24px;
+}
+.te-about-grid h2 em {
+  font-style: italic;
+  color: var(--te-orange);
+}
+.te-about-text p {
+  font-family: var(--te-body);
+  font-size: 16px;
+  color: var(--te-muted);
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+.te-about-text p:last-child { margin-bottom: 0; }
+.te-about-text strong { color: var(--te-text); }
+.te-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.te-hl-card {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  background: var(--te-navy-card);
+  border: 1px solid var(--te-border);
+  border-left: 3px solid var(--te-orange);
+  border-radius: 10px;
+  padding: 18px 20px;
+  transition: transform .2s;
+}
+.te-hl-card:hover { transform: translateX(4px); }
+.te-hl-card h4 {
+  font-family: var(--te-body);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--te-text);
+  margin-bottom: 4px;
+}
+.te-hl-card p {
+  font-family: var(--te-body);
+  font-size: 13px;
+  color: var(--te-muted);
+  line-height: 1.65;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Over ons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chip_label",
+      "label": "Chip label",
+      "default": "Over TechEdge040"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading (HTML toegestaan)",
+      "default": "Wij doen wat we zeggen. <em>Altijd.</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_text",
+      "label": "Body tekst",
+      "default": "<p>TechEdge040 is een klein, hecht team van e-commerce specialisten vanuit Eindhoven. We werken al jaren samen met webshop-eigenaren die gewoon goed geholpen willen worden — zonder grote bureaustructuren of onduidelijke facturen.</p><p><strong>Wat ons anders maakt:</strong> je praat altijd rechtstreeks met ons. Geen doorverbinden, geen anoniem loket. Wij kennen jouw shop en denken proactief met je mee — ook als het project allang klaar is.</p><p>Van een eenvoudige webshop tot complexe kassaintegaties en AI-toepassingen: we hebben het allemaal al gedaan. En we doen het met plezier.</p>"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Kom eens kennismaken →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "highlight",
+      "name": "Highlight kaart",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Direct contact"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Omschrijving",
+          "default": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Over ons",
+      "blocks": [
+        { "type": "highlight", "settings": { "title": "Direct contact", "description": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden. Snel antwoord van mensen die jouw project kennen." } },
+        { "type": "highlight", "settings": { "title": "Korte lijnen", "description": "Snel schakelen, snel beslissen. Geen lange goedkeuringstrajecten of onnodige vergaderingen." } },
+        { "type": "highlight", "settings": { "title": "Persoonlijk betrokken", "description": "We kennen jouw business echt. We signaleren proactief kansen en zijn bereikbaar als er iets speelt." } },
+        { "type": "highlight", "settings": { "title": "Eerlijk advies", "description": "Geen verkooppraatjes. We vertellen je wat werkt, ook als dat betekent dat we iets afraden." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

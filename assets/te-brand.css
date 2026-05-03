@@ -1,0 +1,144 @@
+/* TechEdge040 brand styles — dark navy + oranje accent */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --te-orange:    #D95E1B;
+  --te-orange-lt: #F07030;
+  --te-orange-bg: rgba(217,94,27,.10);
+  --te-orange-bd: rgba(217,94,27,.28);
+
+  --te-navy:      #0C1628;
+  --te-navy-mid:  #111E38;
+  --te-navy-card: #162444;
+  --te-navy-lt:   #1C2D50;
+
+  --te-text:   #F0EDE8;
+  --te-muted:  rgba(240,237,232,.60);
+  --te-faint:  rgba(240,237,232,.30);
+
+  --te-border:    rgba(255,255,255,.08);
+  --te-border-lt: rgba(255,255,255,.14);
+  --te-shadow-md: 0 8px 32px rgba(0,0,0,.35);
+  --te-shadow-lg: 0 20px 60px rgba(0,0,0,.45);
+
+  --te-display: 'Fraunces', Georgia, serif;
+  --te-body:    'Outfit', system-ui, sans-serif;
+
+  --te-px:   clamp(18px, 5vw, 64px);
+  --te-py:   clamp(56px, 8vw, 100px);
+  --te-maxw: 1160px;
+}
+
+/* Dot-grid texture on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+/* Shared reveal animation */
+.te-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.te-reveal.te-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Chip (label above headings) */
+.te-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--te-orange);
+  margin-bottom: 12px;
+}
+.te-chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--te-orange);
+  flex-shrink: 0;
+  animation: te-blink 2.2s infinite;
+}
+@keyframes te-blink { 0%,100%{opacity:1;}50%{opacity:.2;} }
+
+/* Shared btn styles */
+.te-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--te-body);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 9px;
+  border: 2px solid transparent;
+  transition: background .2s, border-color .2s, color .2s, transform .18s, box-shadow .2s;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+.te-btn:hover { transform: translateY(-2px); }
+.te-btn--primary {
+  background: var(--te-orange);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(217,94,27,.35);
+}
+.te-btn--primary:hover {
+  background: var(--te-orange-lt);
+  box-shadow: 0 8px 28px rgba(217,94,27,.45);
+  color: #fff;
+}
+.te-btn--outline {
+  background: transparent;
+  color: var(--te-text);
+  border-color: var(--te-border-lt);
+}
+.te-btn--outline:hover {
+  border-color: var(--te-orange);
+  color: var(--te-orange);
+}
+.te-btn--lg { font-size: 17px; padding: 16px 34px; border-radius: 10px; }
+
+/* TE section wrap */
+.te-wrap {
+  max-width: var(--te-maxw);
+  margin: 0 auto;
+  padding: 0 var(--te-px);
+}
+.te-section {
+  max-width: var(--te-maxw);
+  margin: 0 auto;
+  padding: var(--te-py) var(--te-px);
+}
+
+/* Headings in TE sections */
+.te-section h1, .te-section h2, .te-section h3, .te-section h4,
+.te-hero-text h1, .te-hero-text h2 {
+  font-family: var(--te-display);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--te-text);
+}
+.te-section h1 { font-size: clamp(34px, 6vw, 68px); font-weight: 900; }
+.te-section h2 { font-size: clamp(24px, 4vw, 46px); font-weight: 900; }
+.te-section h3 { font-size: clamp(17px, 2vw, 22px); font-weight: 700; }
+.te-section h4 { font-size: 16px; font-weight: 700; }
+.te-section h1 em, .te-section h2 em, .te-section h3 em,
+.te-hero-text h1 em {
+  font-style: italic;
+  color: var(--te-orange);
+}

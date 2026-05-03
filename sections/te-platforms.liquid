@@ -1,0 +1,99 @@
+<div class="te-platforms-bar">
+  <div class="te-pb-inner te-wrap">
+    <span class="te-pb-label">Wij werken met</span>
+    {%- for block in section.blocks -%}
+      <div class="te-pill" {{ block.shopify_attributes }}>
+        <span class="te-pill-dot" aria-hidden="true"></span>
+        {{ block.settings.platform_name }}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.te-platforms-bar {
+  background: var(--te-navy-card);
+  border-top: 1px solid var(--te-border);
+  border-bottom: 1px solid var(--te-border);
+  padding: 20px var(--te-px);
+  position: relative;
+  z-index: 1;
+}
+.te-pb-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.te-pb-label {
+  font-family: var(--te-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--te-faint);
+  margin-right: 6px;
+  white-space: nowrap;
+}
+.te-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--te-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--te-muted);
+  background: rgba(255,255,255,.04);
+  border: 1px solid var(--te-border);
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: border-color .2s, color .2s;
+}
+.te-pill:hover {
+  border-color: var(--te-orange-bd);
+  color: var(--te-orange);
+}
+.te-pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--te-orange);
+  opacity: .7;
+  flex-shrink: 0;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Platforms Bar",
+  "blocks": [
+    {
+      "type": "platform",
+      "name": "Platform",
+      "settings": [
+        {
+          "type": "text",
+          "id": "platform_name",
+          "label": "Platform naam",
+          "default": "Shopify"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Platforms Bar",
+      "blocks": [
+        { "type": "platform", "settings": { "platform_name": "Shopify" } },
+        { "type": "platform", "settings": { "platform_name": "Lightspeed" } },
+        { "type": "platform", "settings": { "platform_name": "WooCommerce" } },
+        { "type": "platform", "settings": { "platform_name": "WordPress" } },
+        { "type": "platform", "settings": { "platform_name": "Mollie" } },
+        { "type": "platform", "settings": { "platform_name": "Klaviyo" } },
+        { "type": "platform", "settings": { "platform_name": "REST & GraphQL" } },
+        { "type": "platform", "settings": { "platform_name": "Exact Online" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

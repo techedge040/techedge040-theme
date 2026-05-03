@@ -1,0 +1,81 @@
+<div class="te-stats-bar">
+  <div class="te-stats-inner te-wrap">
+    {%- for block in section.blocks -%}
+      <div class="te-stats-item te-reveal" {{ block.shopify_attributes }}>
+        <div class="te-stats-n">{{ block.settings.number }}</div>
+        <div class="te-stats-l">{{ block.settings.label }}</div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+.te-stats-bar {
+  background: var(--te-navy-lt);
+  border-top: 1px solid var(--te-border);
+  border-bottom: 1px solid var(--te-border);
+  padding: clamp(32px,5vw,56px) var(--te-px);
+  position: relative;
+  z-index: 1;
+}
+.te-stats-inner {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 32px;
+}
+@media(min-width:640px) {
+  .te-stats-inner { grid-template-columns: repeat(4,1fr); }
+}
+.te-stats-item { text-align: center; }
+.te-stats-n {
+  font-family: var(--te-display);
+  font-weight: 900;
+  font-size: clamp(32px,5vw,52px);
+  color: var(--te-orange);
+  line-height: 1;
+}
+.te-stats-l {
+  font-family: var(--te-body);
+  font-size: 13px;
+  color: var(--te-faint);
+  margin-top: 6px;
+  font-weight: 500;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Stats Bar",
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Getal",
+          "default": "99+"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Projecten afgerond"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Stats Bar",
+      "blocks": [
+        { "type": "stat", "settings": { "number": "99+", "label": "Projecten afgerond" } },
+        { "type": "stat", "settings": { "number": "8jr", "label": "E-commerce ervaring" } },
+        { "type": "stat", "settings": { "number": "100%", "label": "Migraties zonder verlies" } },
+        { "type": "stat", "settings": { "number": "1dag", "label": "Gemiddelde reactietijd" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

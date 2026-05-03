@@ -1,0 +1,303 @@
+<section class="te-contact-section" id="contact">
+  <div class="te-section te-contact-grid">
+    <div class="te-reveal">
+      <div class="te-chip">{{ section.settings.chip_label }}</div>
+      <h2>{{ section.settings.heading }}</h2>
+      <p class="te-contact-lead">{{ section.settings.lead_text }}</p>
+      <div class="te-ci-list">
+        <div class="te-ci-item">
+          <div class="te-ci-icon" aria-hidden="true">✉️</div>
+          <div class="te-ci-text">
+            <small>E-mail</small>
+            <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+          </div>
+        </div>
+        <div class="te-ci-item">
+          <div class="te-ci-icon" aria-hidden="true">📱</div>
+          <div class="te-ci-text">
+            <small>WhatsApp / Bellen</small>
+            <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
+          </div>
+        </div>
+        <div class="te-ci-item">
+          <div class="te-ci-icon" aria-hidden="true">📍</div>
+          <div class="te-ci-text">
+            <small>Locatie</small>
+            <span>{{ section.settings.location }}</span>
+          </div>
+        </div>
+        <div class="te-ci-item">
+          <div class="te-ci-icon" aria-hidden="true">⏱️</div>
+          <div class="te-ci-text">
+            <small>Reactietijd</small>
+            <span>{{ section.settings.response_time }}</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:28px;">
+        <a href="{{ section.settings.whatsapp_url }}" class="te-btn te-btn--primary" target="_blank" rel="noopener" style="width:100%;max-width:280px;justify-content:center;">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="te-reveal">
+      {%- form 'contact', id: 'te-contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="te-form-success">
+            <p>✅ Bedankt voor je bericht! We reageren binnen 1 werkdag.</p>
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="te-form-error">
+              <p>⚠️ Er is iets misgegaan. Controleer de velden en probeer opnieuw.</p>
+            </div>
+          {%- endif -%}
+          <div class="te-form-row">
+            <div class="te-fg">
+              <label for="ContactFormName">Naam</label>
+              <input type="text" id="ContactFormName" name="contact[name]" value="{{ form.name }}" placeholder="Jan de Vries" autocomplete="name">
+            </div>
+            <div class="te-fg">
+              <label for="ContactFormCompany">Bedrijf</label>
+              <input type="text" id="ContactFormCompany" name="contact[company]" placeholder="Jouw bedrijf">
+            </div>
+          </div>
+          <div class="te-fg">
+            <label for="ContactFormEmail">E-mailadres <span aria-hidden="true">*</span></label>
+            <input type="email" id="ContactFormEmail" name="contact[email]" value="{{ form.email }}" placeholder="jan@bedrijf.nl" autocomplete="email" required>
+          </div>
+          <div class="te-fg">
+            <label for="ContactFormPhone">Telefoon / WhatsApp</label>
+            <input type="tel" id="ContactFormPhone" name="contact[phone]" placeholder="+31 6 12 34 56 78" autocomplete="tel">
+          </div>
+          <div class="te-fg">
+            <label for="ContactFormSubject">Waar kan ik je mee helpen?</label>
+            <select id="ContactFormSubject" name="contact[subject]">
+              <option value="" disabled selected>Kies een onderwerp...</option>
+              <option>Shopify webshop bouwen</option>
+              <option>Shopify Kassa (POS)</option>
+              <option>Lightspeed implementatie</option>
+              <option>Retail kassa koppeling</option>
+              <option>Webshop migratie</option>
+              <option>Webshop optimalisatie</option>
+              <option>AI webshop</option>
+              <option>Support / ondersteuning</option>
+              <option>Iets anders</option>
+            </select>
+          </div>
+          <div class="te-fg">
+            <label for="ContactFormMessage">Vertel ons iets over je situatie <span aria-hidden="true">*</span></label>
+            <textarea id="ContactFormMessage" name="contact[body]" placeholder="Wat speelt er? Wat wil je bereiken? Hoe kunnen we helpen?" required>{{ form.body }}</textarea>
+          </div>
+          <button type="submit" class="te-btn te-btn--primary" style="width:100%;justify-content:center;font-size:16px;padding:16px 28px;">Verzenden</button>
+          <p class="te-form-disclaimer">We versturen je bericht veilig en reageren binnen 1 werkdag.</p>
+        {%- endif -%}
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% stylesheet %}
+.te-contact-section {
+  background: var(--te-navy-mid);
+  border-top: 1px solid var(--te-border);
+  position: relative;
+  z-index: 1;
+}
+.te-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+}
+@media(min-width:768px) {
+  .te-contact-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+}
+.te-contact-grid h2 {
+  font-family: var(--te-display);
+  font-size: clamp(24px,4vw,46px);
+  font-weight: 900;
+  color: var(--te-text);
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.te-contact-lead {
+  font-family: var(--te-body);
+  font-size: clamp(15px,2vw,17px);
+  color: var(--te-muted);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.te-ci-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.te-ci-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.te-ci-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--te-orange-bg);
+  border: 1px solid var(--te-orange-bd);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.te-ci-text small {
+  display: block;
+  font-family: var(--te-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--te-faint);
+  margin-bottom: 2px;
+}
+.te-ci-text a, .te-ci-text span {
+  font-family: var(--te-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--te-text);
+  transition: color .2s;
+  text-decoration: none;
+}
+.te-ci-text a:hover { color: var(--te-orange); }
+/* Form */
+#te-contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.te-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media(min-width:480px) { .te-form-row { grid-template-columns: 1fr 1fr; } }
+.te-fg {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.te-fg label {
+  font-family: var(--te-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--te-faint);
+}
+.te-fg input,
+.te-fg textarea,
+.te-fg select {
+  font-family: var(--te-body);
+  background: rgba(255,255,255,.05);
+  border: 1.5px solid var(--te-border);
+  border-radius: 8px;
+  padding: 13px 16px;
+  color: var(--te-text);
+  font-size: 15px;
+  outline: none;
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color .2s, background .2s;
+}
+.te-fg input:focus,
+.te-fg textarea:focus,
+.te-fg select:focus {
+  border-color: var(--te-orange-bd);
+  background: var(--te-orange-bg);
+}
+.te-fg select option { background: var(--te-navy-card); color: var(--te-text); }
+.te-fg textarea { min-height: 120px; resize: vertical; }
+.te-form-disclaimer {
+  font-family: var(--te-body);
+  font-size: 12px;
+  color: #8fa3bf;
+  text-align: center;
+  margin-top: 4px;
+}
+.te-form-success {
+  background: rgba(16,185,129,.12);
+  border: 1px solid rgba(16,185,129,.3);
+  border-radius: 10px;
+  padding: 20px;
+}
+.te-form-success p, .te-form-error p {
+  font-family: var(--te-body);
+  font-size: 15px;
+  color: var(--te-text);
+}
+.te-form-error {
+  background: rgba(217,94,27,.12);
+  border: 1px solid var(--te-orange-bd);
+  border-radius: 10px;
+  padding: 20px;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chip_label",
+      "label": "Chip label",
+      "default": "Contact"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Laten we kennismaken!"
+    },
+    {
+      "type": "textarea",
+      "id": "lead_text",
+      "label": "Lead tekst",
+      "default": "Heb je een vraag, een idee of wil je weten of we iets voor je kunnen betekenen? Stuur ons een bericht of bel gewoon. We reageren altijd snel."
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "E-mailadres",
+      "default": "info@techedge040.nl"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Telefoonnummer",
+      "default": "+31 6 31 25 35 96"
+    },
+    {
+      "type": "text",
+      "id": "location",
+      "label": "Locatie",
+      "default": "Eindhoven, Nederland"
+    },
+    {
+      "type": "text",
+      "id": "response_time",
+      "label": "Reactietijd",
+      "default": "Binnen 1 werkdag"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_url",
+      "label": "WhatsApp URL",
+      "default": "https://wa.me/31631253596"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Contact"
+    }
+  ]
+}
+{% endschema %}

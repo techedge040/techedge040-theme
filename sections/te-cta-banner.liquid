@@ -1,0 +1,106 @@
+<div class="te-cta-banner">
+  <div class="te-cta-banner-glow" aria-hidden="true"></div>
+  <div class="te-cta-inner te-reveal">
+    <div class="te-chip" style="justify-content:center;">{{ section.settings.chip_label }}</div>
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.description }}</p>
+    <div class="te-cta-actions">
+      <a href="{{ section.settings.cta_url }}" class="te-btn te-btn--primary te-btn--lg">{{ section.settings.cta_label }}</a>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.te-cta-banner {
+  background: linear-gradient(135deg, var(--te-navy-lt) 0%, var(--te-navy-mid) 100%);
+  border-top: 1px solid var(--te-border);
+  border-bottom: 1px solid var(--te-border);
+  padding: var(--te-py) var(--te-px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.te-cta-banner-glow {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(217,94,27,.16) 0%, transparent 65%);
+  pointer-events: none;
+}
+.te-cta-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.te-cta-inner h2 {
+  font-family: var(--te-display);
+  font-size: clamp(24px,4vw,46px);
+  font-weight: 900;
+  color: var(--te-text);
+  letter-spacing: -.02em;
+  margin-bottom: 16px;
+}
+.te-cta-inner h2 em {
+  font-style: italic;
+  color: var(--te-orange);
+}
+.te-cta-inner p {
+  font-family: var(--te-body);
+  color: var(--te-muted);
+  font-size: clamp(15px,2vw,18px);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.te-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE CTA Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chip_label",
+      "label": "Chip label",
+      "default": "Klaar om te starten?"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading (HTML toegestaan)",
+      "default": "Jouw webshop verdient een <em>echte</em> partner"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Omschrijving",
+      "default": "Plan een vrijblijvend kennismakingsgesprek. We kijken samen naar jouw situatie en geven eerlijk advies over wat het beste past. Geen verkooppraatje, gewoon een goed gesprek."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "CTA label",
+      "default": "Gesprek plannen →"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "CTA URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE CTA Banner"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,195 @@
+<div class="te-reviews-section">
+  <div class="te-section">
+    <div class="te-reviews-header te-reveal">
+      <div class="te-chip" style="justify-content:center;">{{ section.settings.chip_label }}</div>
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+    <div class="te-reviews-grid">
+      {%- for block in section.blocks -%}
+        <div class="te-review-card te-reveal" {{ block.shopify_attributes }}>
+          <div class="te-review-stars" aria-label="5 sterren">★★★★★</div>
+          <p class="te-review-text">"{{ block.settings.review_text }}"</p>
+          <div class="te-review-author">
+            <div class="te-review-avatar" aria-hidden="true">{{ block.settings.avatar_initial }}</div>
+            <div>
+              <div class="te-review-name">{{ block.settings.reviewer_name }}</div>
+              <div class="te-review-company">{{ block.settings.reviewer_company }}</div>
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+.te-reviews-section {
+  background: var(--te-navy-mid);
+  border-top: 1px solid var(--te-border);
+  border-bottom: 1px solid var(--te-border);
+  position: relative;
+  z-index: 1;
+}
+.te-reviews-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.te-reviews-header h2 {
+  font-family: var(--te-display);
+  font-size: clamp(24px,4vw,46px);
+  font-weight: 900;
+  color: var(--te-text);
+  letter-spacing: -.02em;
+  margin-top: 4px;
+}
+.te-reviews-header h2 em {
+  font-style: italic;
+  color: var(--te-orange);
+}
+.te-reviews-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+@media(min-width:600px) { .te-reviews-grid { grid-template-columns: repeat(2,1fr); } }
+@media(min-width:900px) { .te-reviews-grid { grid-template-columns: repeat(3,1fr); } }
+.te-review-card {
+  background: var(--te-navy-card);
+  border: 1px solid var(--te-border);
+  border-radius: 12px;
+  padding: 24px;
+  transition: border-color .2s;
+}
+.te-review-card:hover { border-color: var(--te-orange-bd); }
+.te-review-stars {
+  color: #FFC107;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+.te-review-text {
+  font-family: var(--te-body);
+  font-size: 14px;
+  color: var(--te-muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.te-review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.te-review-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--te-orange-bg);
+  border: 2px solid var(--te-orange-bd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--te-orange);
+  flex-shrink: 0;
+  font-family: var(--te-display);
+}
+.te-review-name {
+  font-family: var(--te-body);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--te-text);
+}
+.te-review-company {
+  font-family: var(--te-body);
+  font-size: 12px;
+  color: var(--te-faint);
+}
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "chip_label",
+      "label": "Chip label",
+      "default": "Wat klanten zeggen"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading (HTML toegestaan)",
+      "default": "Ondernemers over <em>TechEdge040</em>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "text",
+          "id": "avatar_initial",
+          "label": "Avatar initiaal (bijv. M)",
+          "default": "M"
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Naam reviewer",
+          "default": "Marieke van den Berg"
+        },
+        {
+          "type": "text",
+          "id": "reviewer_company",
+          "label": "Bedrijf / omschrijving",
+          "default": "Fashion webshop, Utrecht"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review tekst",
+          "default": "Eindelijk een partij die gewoon doet wat ze beloven."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "M",
+            "reviewer_name": "Marieke van den Berg",
+            "reviewer_company": "Fashion webshop, Utrecht",
+            "review_text": "Eindelijk een partij die gewoon doet wat ze beloven. Onze Shopify-webshop staat er prachtig bij en de samenwerking was heel prettig — korte lijnen, geen gedoe."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "T",
+            "reviewer_name": "Thomas Pieters",
+            "reviewer_company": "Sportwinkel, Eindhoven",
+            "review_text": "De migratie van ons oude systeem naar Shopify verliep vlekkeloos. Geen dataverlies, geen lange downtime. En daarna stonden ze gewoon klaar voor vervolgvragen."
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "S",
+            "reviewer_name": "Sandra Koopman",
+            "reviewer_company": "Concept store, Amsterdam",
+            "review_text": "Lightspeed POS gekoppeld aan onze webshop — nu loopt alles automatisch. Voorraad klopt altijd, klanten kunnen overal retourneren. Hadden we eerder moeten doen!"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

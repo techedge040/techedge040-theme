@@ -1,0 +1,215 @@
+<footer class="te-footer">
+  <div class="te-footer-main te-wrap">
+    <div class="te-footer-brand">
+      <a href="{{ routes.root_url }}" class="te-footer-logo" aria-label="{{ shop.name }}">
+        <svg viewBox="0 0 36 36" fill="none" width="30" height="30" aria-hidden="true">
+          <rect width="36" height="36" rx="8" fill="#162444"/>
+          <polygon points="8,28 16,8 20,8 12,28" fill="#D95E1B"/>
+          <polygon points="16,28 24,8 28,8 20,28" fill="#D95E1B" opacity="0.4"/>
+          <rect x="8" y="26" width="20" height="2.5" rx="1" fill="#D95E1B"/>
+        </svg>
+        <span class="te-footer-logo-text">TechEdge<span>040</span></span>
+      </a>
+      <p class="te-footer-tagline">{{ section.settings.tagline }}</p>
+      {%- if section.settings.show_partner_labels -%}
+        <p class="te-footer-partners">Shopify Partner &middot; Lightspeed Partner</p>
+      {%- endif -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'column' -%}
+        <div class="te-footer-col" {{ block.shopify_attributes }}>
+          <h5>{{ block.settings.heading }}</h5>
+          {%- assign links = block.settings.links | split: '|' -%}
+          {%- assign urls = block.settings.urls | split: '|' -%}
+          {%- for link in links -%}
+            {%- assign link_url = urls[forloop.index0] | strip -%}
+            {%- if link_url == blank -%}{%- assign link_url = '#' -%}{%- endif -%}
+            <a href="{{ link_url }}">{{ link | strip }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <div class="te-footer-bottom te-wrap">
+    <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }} &middot; Eindhoven</span>
+    <div class="te-footer-bottom-links">
+      {%- if shop.privacy_policy != blank -%}
+        <a href="{{ shop.privacy_policy.url }}">Privacyverklaring</a>
+      {%- endif -%}
+      {%- if shop.terms_of_service != blank -%}
+        <a href="{{ shop.terms_of_service.url }}">Algemene voorwaarden</a>
+      {%- endif -%}
+      <a href="/pages/partners">Partners</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+.te-footer {
+  background: var(--te-navy-card);
+  border-top: 1px solid var(--te-border);
+  position: relative;
+  z-index: 1;
+}
+.te-footer-main {
+  padding: clamp(40px,6vw,72px) var(--te-px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+@media(min-width:640px) { .te-footer-main { grid-template-columns: 1fr 1fr; } }
+@media(min-width:900px) { .te-footer-main { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; } }
+.te-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+.te-footer-logo-text {
+  font-family: var(--te-display);
+  font-weight: 900;
+  font-size: 18px;
+  color: var(--te-text);
+  letter-spacing: -.03em;
+  line-height: 1;
+}
+.te-footer-logo-text span { color: var(--te-orange); }
+.te-footer-tagline {
+  font-family: var(--te-body);
+  font-size: 14px;
+  color: var(--te-faint);
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.te-footer-partners {
+  font-family: var(--te-body);
+  font-size: 12px;
+  color: var(--te-faint);
+  font-weight: 600;
+}
+.te-footer-col h5 {
+  font-family: var(--te-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--te-faint);
+  margin-bottom: 14px;
+}
+.te-footer-col a {
+  display: block;
+  font-family: var(--te-body);
+  font-size: 14px;
+  color: var(--te-muted);
+  margin-bottom: 9px;
+  transition: color .2s;
+  text-decoration: none;
+}
+.te-footer-col a:hover { color: var(--te-orange); }
+.te-footer-bottom {
+  padding: 20px var(--te-px);
+  border-top: 1px solid var(--te-border);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+}
+.te-footer-bottom span {
+  font-family: var(--te-body);
+  font-size: 13px;
+  color: var(--te-faint);
+}
+.te-footer-bottom-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.te-footer-bottom-links a {
+  font-family: var(--te-body);
+  font-size: 13px;
+  color: var(--te-faint);
+  transition: color .2s;
+  text-decoration: none;
+}
+.te-footer-bottom-links a:hover { color: var(--te-orange); }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "TE Footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Jouw e-commerce partner vanuit Eindhoven. Shopify, Lightspeed, migraties, AI en meer. Persoonlijk, direct en betrokken."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_partner_labels",
+      "label": "Toon partner labels",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Footer kolom",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Kolom heading",
+          "default": "Shopify"
+        },
+        {
+          "type": "textarea",
+          "id": "links",
+          "label": "Link labels (gescheiden door |)",
+          "default": "Shopify webshop|Shopify Kassa (POS)|Shopify support|Koppelingen"
+        },
+        {
+          "type": "textarea",
+          "id": "urls",
+          "label": "Link URLs (gescheiden door |)",
+          "default": "/pages/shopify|/pages/shopify-pos|/pages/shopify-support|/pages/shopify#koppelingen"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "TE Footer",
+      "blocks": [
+        {
+          "type": "column",
+          "settings": {
+            "heading": "Shopify",
+            "links": "Shopify webshop|Shopify Kassa (POS)|Shopify support|Koppelingen",
+            "urls": "/pages/shopify|/pages/shopify-pos|/pages/shopify-support|/pages/shopify"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "heading": "Lightspeed",
+            "links": "Lightspeed webshop|Retail kassa|Lightspeed support",
+            "urls": "/pages/lightspeed|/pages/retail-kassa|/pages/lightspeed-support"
+          }
+        },
+        {
+          "type": "column",
+          "settings": {
+            "heading": "Diensten",
+            "links": "Webshop migratie|Optimalisatie|Verbetering|Smart Commerce|AI Webshop|AI Ontwikkeling",
+            "urls": "/pages/webshop-migratie|/pages/webshop-optimalisatie|/pages/webshop-verbetering|/pages/smart-commerce|/pages/ai-webshop|/pages/ai-ontwikkeling"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,211 +1,211 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "product_list_fa6P9H": {
-      "type": "product-list",
+    "te_hero": {
+      "type": "te-hero",
+      "settings": {
+        "badge_text": "Eindhoven — heel Nederland",
+        "heading": "Webshops die werken. <em>Echt.<\/em>",
+        "lead_text": "Wij zijn TechEdge040 — jouw directe partner voor Shopify en Lightspeed. Van nieuwbouw tot slimme AI-integraties: wij helpen je groeien. Persoonlijk contact, korte lijnen, echte resultaten.",
+        "cta_primary_label": "Gratis kennismaking →",
+        "cta_primary_url": "\/pages\/contact",
+        "cta_outline_label": "Bekijk diensten",
+        "cta_outline_url": "\/#diensten",
+        "stat1_number": "99+",
+        "stat1_label": "Projecten",
+        "stat2_number": "8jr",
+        "stat2_label": "Ervaring"
+      }
+    },
+    "te_platforms": {
+      "type": "te-platforms",
       "blocks": {
-        "static-header": {
-          "type": "_product-list-content",
-          "name": "t:names.header",
-          "static": true,
+        "p1": { "type": "platform", "settings": { "platform_name": "Shopify" } },
+        "p2": { "type": "platform", "settings": { "platform_name": "Lightspeed" } },
+        "p3": { "type": "platform", "settings": { "platform_name": "WooCommerce" } },
+        "p4": { "type": "platform", "settings": { "platform_name": "WordPress" } },
+        "p5": { "type": "platform", "settings": { "platform_name": "Mollie" } },
+        "p6": { "type": "platform", "settings": { "platform_name": "Klaviyo" } },
+        "p7": { "type": "platform", "settings": { "platform_name": "REST & GraphQL" } },
+        "p8": { "type": "platform", "settings": { "platform_name": "Exact Online" } }
+      },
+      "block_order": ["p1","p2","p3","p4","p5","p6","p7","p8"],
+      "settings": {}
+    },
+    "te_stats": {
+      "type": "te-stats",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "number": "99+", "label": "Projecten afgerond" } },
+        "s2": { "type": "stat", "settings": { "number": "8jr", "label": "E-commerce ervaring" } },
+        "s3": { "type": "stat", "settings": { "number": "100%", "label": "Migraties zonder verlies" } },
+        "s4": { "type": "stat", "settings": { "number": "1dag", "label": "Gemiddelde reactietijd" } }
+      },
+      "block_order": ["s1","s2","s3","s4"],
+      "settings": {}
+    },
+    "te_services_shopify": {
+      "type": "te-services",
+      "blocks": {
+        "c1": { "type": "card", "settings": { "icon_type": "shopify", "title": "Webshop bouwen", "description": "Nieuw of doorontwikkeld — we bouwen een Shopify-shop die bij jou past.", "card_url": "\/pages\/shopify" } },
+        "c2": { "type": "card", "settings": { "icon_type": "shopify", "title": "Uitbreiding & features", "description": "Extra functionaliteit, custom componenten, slimme app-integraties.", "card_url": "\/pages\/shopify" } },
+        "c3": { "type": "card", "settings": { "icon_type": "shopify", "title": "Koppelingen", "description": "Shopify verbonden met je ERP, boekhouding, fulfillment of CRM.", "card_url": "\/pages\/shopify" } },
+        "c4": { "type": "card", "settings": { "icon_type": "shopify", "title": "Shopify Kassa (POS)", "description": "Winkel en webshop als één systeem — realtime voorraad, één klantprofiel.", "card_url": "\/pages\/shopify-pos" } },
+        "c5": { "type": "card", "settings": { "icon_type": "shopify", "title": "Hulp & Support", "description": "Doorlopend beheer en altijd iemand bereikbaar die jouw shop kent.", "card_url": "\/pages\/shopify-support" } }
+      },
+      "block_order": ["c1","c2","c3","c4","c5"],
+      "settings": {
+        "section_id": "diensten",
+        "bg_variant": "navy",
+        "chip_label": "Shopify",
+        "heading": "Shopify webshops & oplossingen",
+        "description": "Van een gloednieuwe shop tot slimme kassaintegatie — we kennen Shopify door en door en helpen je er alles uit te halen.",
+        "link_text": "Alles over Shopify",
+        "link_url": "\/pages\/shopify"
+      }
+    },
+    "te_services_lightspeed": {
+      "type": "te-services",
+      "blocks": {
+        "l1": { "type": "card", "settings": { "icon_type": "lightspeed", "title": "Webshop bouwen", "description": "Lightspeed eCom professioneel ingericht voor jouw merk en doelgroep.", "card_url": "\/pages\/lightspeed" } },
+        "l2": { "type": "card", "settings": { "icon_type": "lightspeed", "title": "Retail Kassa & Webshop", "description": "Kassa en webshop gesynchroniseerd — één voorraad, één klantdatabase.", "card_url": "\/pages\/retail-kassa" } },
+        "l3": { "type": "card", "settings": { "icon_type": "lightspeed", "title": "Koppelingen", "description": "Lightspeed verbonden met boekhouding, loyaliteitsplatform en meer.", "card_url": "\/pages\/lightspeed" } },
+        "l4": { "type": "card", "settings": { "icon_type": "lightspeed", "title": "Hulp & Support", "description": "Van kassaproblemen tot webshop-optimalisatie — altijd bereikbaar.", "card_url": "\/pages\/lightspeed-support" } }
+      },
+      "block_order": ["l1","l2","l3","l4"],
+      "settings": {
+        "section_id": "lightspeed",
+        "bg_variant": "navy-mid",
+        "chip_label": "Lightspeed",
+        "heading": "Lightspeed kassa & webshop",
+        "description": "Voor retail en horeca die online en offline als één geheel wil laten werken. Lightspeed van A tot Z.",
+        "link_text": "Alles over Lightspeed",
+        "link_url": "\/pages\/lightspeed"
+      }
+    },
+    "te_services_other": {
+      "type": "te-services",
+      "blocks": {
+        "o1": { "type": "card", "settings": { "icon_type": "none", "title": "Webshop Migratie", "description": "Overstappen naar een nieuw platform zonder dataverlies of downtime.", "card_url": "\/pages\/webshop-migratie" } },
+        "o2": { "type": "card", "settings": { "icon_type": "none", "title": "Webshop Optimalisatie", "description": "Analyseren waar bezoekers afhaken en dat gericht oplossen.", "card_url": "\/pages\/webshop-optimalisatie" } },
+        "o3": { "type": "card", "settings": { "icon_type": "none", "title": "Webshop Verbetering", "description": "Design, UX en techniek — mooier, sneller en prettiger in gebruik.", "card_url": "\/pages\/webshop-verbetering" } },
+        "o4": { "type": "card", "settings": { "icon_type": "none", "title": "Smart Commerce", "description": "Processen automatiseren zodat je webshop harder werkt voor je.", "card_url": "\/pages\/smart-commerce" } },
+        "o5": { "type": "card", "settings": { "icon_type": "none", "title": "AI Webshop", "description": "AI voor productbeschrijvingen, aanbevelingen, zoekfunctie en chatbot.", "card_url": "\/pages\/ai-webshop" } },
+        "o6": { "type": "card", "settings": { "icon_type": "none", "title": "AI Ontwikkeling & Implementatie", "description": "Automatiseringen, controles, productteksten, beeldoptimalisatie en data-analyse.", "card_url": "\/pages\/ai-ontwikkeling" } }
+      },
+      "block_order": ["o1","o2","o3","o4","o5","o6"],
+      "settings": {
+        "section_id": "overige-diensten",
+        "bg_variant": "navy",
+        "chip_label": "Overige diensten",
+        "heading": "Meer dan alleen platforms",
+        "description": "We gaan verder dan bouwen alleen. Optimalisatie, migraties, AI en slimme automatisering — wij denken verder mee.",
+        "link_text": "Bespreek jouw project",
+        "link_url": "\/#contact"
+      }
+    },
+    "te_reviews": {
+      "type": "te-reviews",
+      "blocks": {
+        "r1": {
+          "type": "review",
           "settings": {
-            "content_direction": "row",
-            "vertical_on_mobile": false,
-            "horizontal_alignment": "space-between",
-            "vertical_alignment": "flex-end",
-            "align_baseline": true,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_list_text_YFtzcL": {
-              "type": "_product-list-text",
-              "name": "t:names.collection_title",
-              "settings": {
-                "text": "<h3>{{ closest.collection.title }}</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h4",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_list_button_MWeP9V": {
-              "type": "_product-list-button",
-              "name": "t:names.product_list_button",
-              "settings": {
-                "label": "View all",
-                "open_in_new_tab": false,
-                "style_class": "link",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_list_text_YFtzcL",
-            "product_list_button_MWeP9V"
-          ]
+            "avatar_initial": "M",
+            "reviewer_name": "Marieke van den Berg",
+            "reviewer_company": "Fashion webshop, Utrecht",
+            "review_text": "Eindelijk een partij die gewoon doet wat ze beloven. Onze Shopify-webshop staat er prachtig bij en de samenwerking was heel prettig — korte lijnen, geen gedoe."
+          }
         },
-        "static-product-card": {
-          "type": "_product-card",
-          "name": "t:names.product_card",
-          "static": true,
+        "r2": {
+          "type": "review",
           "settings": {
-            "product_card_gap": 4,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "product_card_gallery_677WP3": {
-              "type": "_product-card-gallery",
-              "name": "t:names.product_card_media",
-              "settings": {
-                "image_ratio": "adapt",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "product_title_YXxMTj": {
-              "type": "product-title",
-              "name": "t:names.product_title",
-              "settings": {
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 4,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "price_JQzVV4": {
-              "type": "price",
-              "name": "t:names.product_price",
-              "settings": {
-                "show_sale_price_first": true,
-                "show_installments": false,
-                "show_tax_info": false,
-                "type_preset": "h6",
-                "width": "100%",
-                "alignment": "left",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "color": "var(--color-foreground)",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "product_card_gallery_677WP3",
-            "product_title_YXxMTj",
-            "price_JQzVV4"
-          ]
+            "avatar_initial": "T",
+            "reviewer_name": "Thomas Pieters",
+            "reviewer_company": "Sportwinkel, Eindhoven",
+            "review_text": "De migratie van ons oude systeem naar Shopify verliep vlekkeloos. Geen dataverlies, geen lange downtime. En daarna stonden ze gewoon klaar voor vervolgvragen."
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "S",
+            "reviewer_name": "Sandra Koopman",
+            "reviewer_company": "Concept store, Amsterdam",
+            "review_text": "Lightspeed POS gekoppeld aan onze webshop — nu loopt alles automatisch. Voorraad klopt altijd, klanten kunnen overal retourneren. Hadden we eerder moeten doen!"
+          }
         }
       },
-      "disabled": true,
-      "name": "t:names.featured_collection",
+      "block_order": ["r1","r2","r3"],
       "settings": {
-        "collection": "all",
-        "layout_type": "grid",
-        "carousel_on_mobile": false,
-        "max_products": 8,
-        "columns": 4,
-        "mobile_columns": "2",
-        "mobile_card_size": "60cqw",
-        "columns_gap": 8,
-        "rows_gap": 24,
-        "icons_style": "arrow",
-        "icons_shape": "none",
-        "section_width": "page-width",
-        "horizontal_alignment": "flex-start",
-        "gap": 28,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "chip_label": "Wat klanten zeggen",
+        "heading": "Ondernemers over <em>TechEdge040<\/em>"
+      }
+    },
+    "te_about": {
+      "type": "te-about",
+      "blocks": {
+        "h1": { "type": "highlight", "settings": { "title": "Direct contact", "description": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden. Snel antwoord van mensen die jouw project kennen." } },
+        "h2": { "type": "highlight", "settings": { "title": "Korte lijnen", "description": "Snel schakelen, snel beslissen. Geen lange goedkeuringstrajecten of onnodige vergaderingen." } },
+        "h3": { "type": "highlight", "settings": { "title": "Persoonlijk betrokken", "description": "We kennen jouw business echt. We signaleren proactief kansen en zijn bereikbaar als er iets speelt." } },
+        "h4": { "type": "highlight", "settings": { "title": "Eerlijk advies", "description": "Geen verkooppraatjes. We vertellen je wat werkt, ook als dat betekent dat we iets afraden." } }
+      },
+      "block_order": ["h1","h2","h3","h4"],
+      "settings": {
+        "chip_label": "Over TechEdge040",
+        "heading": "Wij doen wat we zeggen. <em>Altijd.<\/em>",
+        "body_text": "<p>TechEdge040 is een klein, hecht team van e-commerce specialisten vanuit Eindhoven. We werken al jaren samen met webshop-eigenaren die gewoon goed geholpen willen worden — zonder grote bureaustructuren of onduidelijke facturen.<\/p><p><strong>Wat ons anders maakt:<\/strong> je praat altijd rechtstreeks met ons. Geen doorverbinden, geen anoniem loket. Wij kennen jouw shop en denken proactief met je mee — ook als het project allang klaar is.<\/p><p>Van een eenvoudige webshop tot complexe kassaintegaties en AI-toepassingen: we hebben het allemaal al gedaan. En we doen het met plezier.<\/p>",
+        "cta_label": "Kom eens kennismaken →",
+        "cta_url": "\/#contact"
+      }
+    },
+    "te_werkwijze": {
+      "type": "te-werkwijze",
+      "blocks": {
+        "w1": { "type": "pillar", "settings": { "icon_emoji": "📞", "title": "Direct contact, altijd", "description": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden. Gewoon snel antwoord van mensen die jouw project door en door kennen." } },
+        "w2": { "type": "pillar", "settings": { "icon_emoji": "⚡", "title": "Korte lijnen, snelle beslissingen", "description": "We schakelen direct. Geen eindeloze goedkeuringstrajecten. Als er iets aangepast moet worden, doen we dat gewoon." } },
+        "w3": { "type": "pillar", "settings": { "icon_emoji": "🤝", "title": "Persoonlijk betrokken", "description": "We kennen jouw business — niet als dossier, maar echt. We signaleren proactief kansen en denken mee, ook na oplevering." } },
+        "w4": { "type": "pillar", "settings": { "icon_emoji": "💡", "title": "Transparant en eerlijk", "description": "Geen verkooppraatjes. We vertellen je precies wat verstandig is, ook als dat betekent dat we iets afraden." } }
+      },
+      "block_order": ["w1","w2","w3","w4"],
+      "settings": {
+        "chip_label": "Hoe wij werken",
+        "heading": "Jouw communicatievoorkeur. <em>Onze aanpassing.<\/em>",
+        "lead_text": "Iedereen werkt anders. De ene ondernemer belt liever even op, de ander stuurt een appje tussendoor, sommigen willen alles netjes bijhouden in een ticketsysteem. Allemaal prima. Jij kiest hoe je contact opneemt — wij zorgen dat je altijd snel en goed geholpen wordt."
+      }
+    },
+    "te_cta_banner": {
+      "type": "te-cta-banner",
+      "settings": {
+        "chip_label": "Klaar om te starten?",
+        "heading": "Jouw webshop verdient een <em>echte<\/em> partner",
+        "description": "Plan een vrijblijvend kennismakingsgesprek. We kijken samen naar jouw situatie en geven eerlijk advies over wat het beste past. Geen verkooppraatje, gewoon een goed gesprek.",
+        "cta_label": "Gesprek plannen →",
+        "cta_url": "\/#contact"
+      }
+    },
+    "te_contact": {
+      "type": "te-contact",
+      "settings": {
+        "chip_label": "Contact",
+        "heading": "Laten we kennismaken!",
+        "lead_text": "Heb je een vraag, een idee of wil je weten of we iets voor je kunnen betekenen? Stuur ons een bericht of bel gewoon. We reageren altijd snel.",
+        "email": "info@techedge040.nl",
+        "phone": "+31 6 31 25 35 96",
+        "location": "Eindhoven, Nederland",
+        "response_time": "Binnen 1 werkdag",
+        "whatsapp_url": "https:\/\/wa.me\/31631253596"
       }
     }
   },
   "order": [
-    "product_list_fa6P9H"
+    "te_hero",
+    "te_platforms",
+    "te_stats",
+    "te_services_shopify",
+    "te_services_lightspeed",
+    "te_services_other",
+    "te_reviews",
+    "te_about",
+    "te_werkwijze",
+    "te_cta_banner",
+    "te_contact"
   ]
 }
