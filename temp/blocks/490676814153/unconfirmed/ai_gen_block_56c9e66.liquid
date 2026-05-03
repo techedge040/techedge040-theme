@@ -1,6 +1,401 @@
+{% doc %}
+  @prompt
+    Graag multikolom maken van 4 gelijke delen. Waarvan links logo, zorg dat dit werkt met Shopify.designMode 
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-multicolumn-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.section_padding }}px 0;
+  }
+
+  .ai-multicolumn-container-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: {{ block.settings.column_gap }}px;
+    align-items: {{ block.settings.vertical_alignment }};
+  }
+
+  .ai-multicolumn-column-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.content_gap }}px;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-multicolumn-logo-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    display: flex;
+    justify-content: {% if block.settings.text_alignment == 'center' %}center{% elsif block.settings.text_alignment == 'right' %}flex-end{% else %}flex-start{% endif %};
+  }
+
+  .ai-multicolumn-logo-{{ ai_gen_id }} {
+    max-width: {{ block.settings.logo_width }}px;
+    height: auto;
+  }
+
+  .ai-multicolumn-logo-placeholder-{{ ai_gen_id }} {
+    width: {{ block.settings.logo_width }}px;
+    height: {{ block.settings.logo_width | divided_by: 2 }}px;
+    background-color: {{ block.settings.placeholder_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .ai-multicolumn-logo-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-multicolumn-heading-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.heading_size }}px;
+    color: {{ block.settings.heading_color }};
+  }
+
+  .ai-multicolumn-text-{{ ai_gen_id }} {
+    margin: 0;
+    font-size: {{ block.settings.text_size }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-multicolumn-container-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-multicolumn-container-{{ ai_gen_id }} {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstyle %}
+
+<multi-column-{{ ai_gen_id }}
+  class="ai-multicolumn-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-multicolumn-container-{{ ai_gen_id }}">
+    <div class="ai-multicolumn-column-{{ ai_gen_id }}">
+      <div class="ai-multicolumn-logo-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.logo %}
+          <img
+            src="{{ block.settings.logo | image_url: width: 400 }}"
+            alt="{{ block.settings.logo.alt | escape }}"
+            class="ai-multicolumn-logo-{{ ai_gen_id }}"
+            width="{{ block.settings.logo.width }}"
+            height="{{ block.settings.logo.height }}"
+            loading="lazy"
+          >
+        {% else %}
+          <div class="ai-multicolumn-logo-placeholder-{{ ai_gen_id }}">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    {% for i in (2..4) %}
+      {% liquid
+        assign heading_key = 'heading_' | append: i
+        assign text_key = 'text_' | append: i
+        assign heading = block.settings[heading_key]
+        assign text = block.settings[text_key]
+      %}
+      <div class="ai-multicolumn-column-{{ ai_gen_id }}">
+        {% if heading != blank %}
+          <h3 class="ai-multicolumn-heading-{{ ai_gen_id }}">{{ heading }}</h3>
+        {% endif %}
+        {% if text != blank %}
+          <div class="ai-multicolumn-text-{{ ai_gen_id }}">{{ text }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</multi-column-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    if (!customElements.get('multi-column-{{ ai_gen_id }}')) {
+      class MultiColumn{{ ai_gen_id }} extends HTMLElement {
+        constructor() {
+          super();
+        }
+
+        connectedCallback() {
+          if (window.Shopify && Shopify.designMode) {
+            document.addEventListener('shopify:section:load', this.handleSectionLoad.bind(this));
+            document.addEventListener('shopify:section:unload', this.handleSectionUnload.bind(this));
+            document.addEventListener('shopify:block:select', this.handleBlockSelect.bind(this));
+            document.addEventListener('shopify:block:deselect', this.handleBlockDeselect.bind(this));
+          }
+        }
+
+        disconnectedCallback() {
+          if (window.Shopify && Shopify.designMode) {
+            document.removeEventListener('shopify:section:load', this.handleSectionLoad.bind(this));
+            document.removeEventListener('shopify:section:unload', this.handleSectionUnload.bind(this));
+            document.removeEventListener('shopify:block:select', this.handleBlockSelect.bind(this));
+            document.removeEventListener('shopify:block:deselect', this.handleBlockDeselect.bind(this));
+          }
+        }
+
+        handleSectionLoad(event) {
+          if (this.closest(`[data-section-id="${event.detail.sectionId}"]`)) {
+            this.refresh();
+          }
+        }
+
+        handleSectionUnload(event) {
+          if (this.closest(`[data-section-id="${event.detail.sectionId}"]`)) {
+            this.cleanup();
+          }
+        }
+
+        handleBlockSelect(event) {
+          if (event.target === this || this.contains(event.target)) {
+            this.onBlockSelect();
+          }
+        }
+
+        handleBlockDeselect(event) {
+          if (event.target === this || this.contains(event.target)) {
+            this.onBlockDeselect();
+          }
+        }
+
+        refresh() {
+        }
+
+        cleanup() {
+        }
+
+        onBlockSelect() {
+        }
+
+        onBlockDeselect() {
+        }
+      }
+      customElements.define('multi-column-{{ ai_gen_id }}', MultiColumn{{ ai_gen_id }});
+    }
+  })();
+</script>
+
 {% schema %}
- {
-   "name": "AI_Block",
-   "tag": "shopify-ai-generated-block"
- }
+{
+  "name": "Multikolom met logo",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo (kolom 1)"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo afbeelding"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo breedte",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "Kolom 2"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Kop",
+      "default": "Kolom 2"
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Tekst",
+      "default": "Voeg hier uw tekst toe"
+    },
+    {
+      "type": "header",
+      "content": "Kolom 3"
+    },
+    {
+      "type": "text",
+      "id": "heading_3",
+      "label": "Kop",
+      "default": "Kolom 3"
+    },
+    {
+      "type": "textarea",
+      "id": "text_3",
+      "label": "Tekst",
+      "default": "Voeg hier uw tekst toe"
+    },
+    {
+      "type": "header",
+      "content": "Kolom 4"
+    },
+    {
+      "type": "text",
+      "id": "heading_4",
+      "label": "Kop",
+      "default": "Kolom 4"
+    },
+    {
+      "type": "textarea",
+      "id": "text_4",
+      "label": "Tekst",
+      "default": "Voeg hier uw tekst toe"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop breedte",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Ruimte tussen kolommen",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "content_gap",
+      "label": "Ruimte tussen inhoud",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Sectie padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Tekstuitlijning",
+      "options": [
+        {
+          "value": "left",
+          "label": "Links"
+        },
+        {
+          "value": "center",
+          "label": "Midden"
+        },
+        {
+          "value": "right",
+          "label": "Rechts"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Verticale uitlijning",
+      "options": [
+        {
+          "value": "start",
+          "label": "Boven"
+        },
+        {
+          "value": "center",
+          "label": "Midden"
+        },
+        {
+          "value": "end",
+          "label": "Onder"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "header",
+      "content": "Kleuren"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Kop kleur",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Tekst kleur",
+      "default": "#94a3b8"
+    },
+    {
+      "type": "color",
+      "id": "placeholder_color",
+      "label": "Placeholder kleur",
+      "default": "#1e3a5f"
+    },
+    {
+      "type": "header",
+      "content": "Typografie"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Kop grootte",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Tekst grootte",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Multikolom met logo"
+    }
+  ]
+}
 {% endschema %}
