@@ -1,16 +1,47 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "page_mirror_wgniAH": {
-      "type": "page-mirror",
-      "name": "Page Mirror",
+    "te_services_6aw3zB": {
+      "type": "te-services",
+      "name": "TE Services",
       "settings": {
-        "target_url": "",
-        "proxy_url": "https://api.allorigins.win/raw?url=",
-        "color_scheme": ""
+        "section_id": "diensten",
+        "bg_variant": "navy",
+        "chip_label": "Shopify",
+        "heading": "Shopify webshops & oplossingen",
+        "description": "Van een gloednieuwe shop tot slimme kassaintegatie — we kennen Shopify door en door en helpen je er alles uit te halen.",
+        "link_text": "Alles over Shopify",
+        "link_url": ""
+      }
+    },
+    "te_hero_gyhcTQ": {
+      "type": "te-hero",
+      "name": "TE Hero",
+      "settings": {
+        "badge_text": "Eindhoven — heel Nederland",
+        "heading": "Webshops die werken. <em>Echt.</em>",
+        "lead_text": "Wij zijn TechEdge040 — jouw directe partner voor Shopify en Lightspeed. Van nieuwbouw tot slimme AI-integraties: wij helpen je groeien. Persoonlijk contact, korte lijnen, echte resultaten.",
+        "cta_primary_label": "Gratis kennismaking →",
+        "cta_primary_url": "",
+        "cta_outline_label": "Bekijk diensten",
+        "cta_outline_url": "",
+        "stat1_number": "99+",
+        "stat1_label": "Projecten",
+        "stat2_number": "8jr",
+        "stat2_label": "Ervaring"
       }
     }
   },
   "order": [
-    "page_mirror_wgniAH"
+    "te_services_6aw3zB",
+    "te_hero_gyhcTQ"
   ]
 }
