@@ -1,0 +1,44 @@
+{%- capture children -%}
+  {%- content_for 'blocks' -%}
+{%- endcapture -%}
+
+<div
+  class="te-features-grid"
+  style="--te-features-columns: {{ section.settings.columns | default: 3 }};"
+  {{ block.shopify_attributes }}
+>
+  {{ children }}
+</div>
+
+{% stylesheet %}
+  .te-features-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--te-features-columns, 3), 1fr);
+    gap: 24px;
+    align-items: start;
+    width: 100%;
+  }
+
+  @media screen and (max-width: 749px) {
+    .te-features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .te-features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Features grid",
+  "tag": null,
+  "blocks": [
+    { "type": "group" },
+    { "type": "@theme" }
+  ]
+}
+{% endschema %}

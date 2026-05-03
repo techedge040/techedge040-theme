@@ -9,81 +9,257 @@
  */
  {
   "sections": {
-    "hero_jVaWmY": {
-      "type": "hero",
+    "te_hero_main": {
+      "type": "te-hero",
       "blocks": {
-        "text_YLPk4p": {
-          "type": "text",
-          "name": "t:names.heading",
+        "static-te-hero-media": {
+          "type": "_te-hero-media",
           "settings": {
-            "text": "<p>Browse our latest products</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground-heading)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
+            "media_type": "image",
+            "toggle_overlay": true,
+            "overlay_color": "#12121266",
+            "overlay_style": "gradient",
+            "gradient_direction": "to top"
+          }
+        },
+        "static-te-hero-content": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "flex-end",
+            "gap": 24,
+            "width": "fill",
+            "height": "fill",
+            "inherit_color_scheme": true,
             "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
-          "blocks": {}
-        },
-        "button_H9gpTf": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "Shop all",
-            "link": "shopify://collections/all",
-            "open_in_new_tab": false,
-            "style_class": "button-secondary",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
+          "blocks": {
+            "text_heading": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Browse our latest products</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h2",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground-heading)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            },
+            "button_shop": {
+              "type": "button",
+              "settings": {
+                "label": "Shop all",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "button-secondary",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              }
+            }
           },
-          "blocks": {}
+          "block_order": ["text_heading", "button_shop"]
         }
       },
-      "block_order": [
-        "text_YLPk4p",
-        "button_H9gpTf"
-      ],
-      "name": "t:names.hero",
+      "block_order": ["static-te-hero-media", "static-te-hero-content"],
+      "name": "Hero",
       "settings": {
-        "media_type_1": "image",
-        "media_type_2": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "space-between",
-        "vertical_alignment": "flex-end",
-        "align_baseline": true,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
-        "gap": 24,
-        "section_width": "page-width",
-        "section_height": "medium",
-        "section_height_custom": 50,
+        "section_height": "large",
+        "content_width": "page-width",
         "color_scheme": "scheme-6",
-        "toggle_overlay": true,
-        "overlay_color": "#12121266",
-        "overlay_style": "solid",
-        "gradient_direction": "to bottom",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
         "padding-block-start": 100,
         "padding-block-end": 72
+      }
+    },
+    "te_features_main": {
+      "type": "te-features",
+      "blocks": {
+        "static-te-features-header": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Why choose us</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": ["heading"]
+        },
+        "static-te-features-grid": {
+          "type": "_te-features-grid",
+          "blocks": {
+            "feature_1": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": { "icon": "eye", "width": 32 }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Intentional design</h3>",
+                    "type_preset": "h4",
+                    "font": "var(--font-body--family)",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Everything starts with why. Our products solve real problems with clean, purposeful design.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["icon", "heading", "text"]
+            },
+            "feature_2": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": { "icon": "heart", "width": 32 }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Made with care</h3>",
+                    "type_preset": "h4",
+                    "font": "var(--font-body--family)",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>We build better to make things better for the people using them every single day.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["icon", "heading", "text"]
+            },
+            "feature_3": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": { "icon": "silhouette", "width": 32 }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h3>Customer first</h3>",
+                    "type_preset": "h4",
+                    "font": "var(--font-body--family)",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Real people with a real goal — keeping our customers happy is our top priority.</p>",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["icon", "heading", "text"]
+            }
+          },
+          "block_order": ["feature_1", "feature_2", "feature_3"]
+        }
+      },
+      "block_order": ["static-te-features-header", "static-te-features-grid"],
+      "name": "Features",
+      "settings": {
+        "columns": 3,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "gap": 32,
+        "padding-block-start": 48,
+        "padding-block-end": 48
       }
     },
     "product_list_fa6P9H": {
@@ -146,8 +322,7 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              },
-              "blocks": {}
+              }
             },
             "product_list_button_MWeP9V": {
               "type": "_product-list-button",
@@ -160,8 +335,7 @@
                 "custom_width": 100,
                 "width_mobile": "fit-content",
                 "custom_width_mobile": 100
-              },
-              "blocks": {}
+              }
             }
           },
           "block_order": [
@@ -200,8 +374,7 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              },
-              "blocks": {}
+              }
             },
             "product_title_YXxMTj": {
               "type": "product-title",
@@ -225,8 +398,7 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              },
-              "blocks": {}
+              }
             },
             "price_JQzVV4": {
               "type": "price",
@@ -248,8 +420,7 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              },
-              "blocks": {}
+              }
             }
           },
           "block_order": [
@@ -279,10 +450,240 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "te_testimonials_main": {
+      "type": "te-testimonials",
+      "blocks": {
+        "static-te-testimonials-header": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>What our customers say</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": ["heading"]
+        },
+        "static-te-testimonials-list": {
+          "type": "_te-testimonials-list",
+          "blocks": {
+            "testimonial_1": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 16,
+                "height": "fill",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quote": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>\"Amazing quality! Exactly what I was looking for. The craftsmanship exceeded my expectations.\"</p>",
+                    "type_preset": "rte",
+                    "width": "100%"
+                  }
+                },
+                "author": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>— Sarah M.</p>",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "width": "100%"
+                  }
+                }
+              },
+              "block_order": ["quote", "author"]
+            },
+            "testimonial_2": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 16,
+                "height": "fill",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quote": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>\"Fast shipping and excellent customer service. I will definitely be ordering again!\"</p>",
+                    "type_preset": "rte",
+                    "width": "100%"
+                  }
+                },
+                "author": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>— James R.</p>",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "width": "100%"
+                  }
+                }
+              },
+              "block_order": ["quote", "author"]
+            },
+            "testimonial_3": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 16,
+                "height": "fill",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quote": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>\"Excellent value for money. I have been a loyal customer for years and they never disappoint.\"</p>",
+                    "type_preset": "rte",
+                    "width": "100%"
+                  }
+                },
+                "author": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>— Emma L.</p>",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "width": "100%"
+                  }
+                }
+              },
+              "block_order": ["quote", "author"]
+            }
+          },
+          "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+        }
+      },
+      "block_order": ["static-te-testimonials-header", "static-te-testimonials-list"],
+      "name": "Testimonials",
+      "settings": {
+        "columns": 3,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "gap": 32,
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
+    },
+    "te_cta_main": {
+      "type": "te-cta",
+      "blocks": {
+        "static-te-cta-content": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 20,
+            "width": "fill",
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Ready to explore?</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "alignment": "center"
+              }
+            },
+            "subtext": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Discover our full collection and find something you will love.</p>",
+                "type_preset": "rte",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "center"
+              }
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "label": "Shop now",
+                "link": "shopify://collections/all",
+                "style_class": "button"
+              }
+            }
+          },
+          "block_order": ["heading", "subtext", "button"]
+        }
+      },
+      "block_order": ["static-te-cta-content"],
+      "name": "CTA Banner",
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-3",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      }
     }
   },
   "order": [
-    "hero_jVaWmY",
-    "product_list_fa6P9H"
+    "te_hero_main",
+    "te_features_main",
+    "product_list_fa6P9H",
+    "te_testimonials_main",
+    "te_cta_main"
   ]
 }

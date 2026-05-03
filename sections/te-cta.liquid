@@ -1,0 +1,124 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} te-cta spacing-style"
+  style="{% render 'spacing-style', settings: section.settings %}"
+>
+  {% content_for 'block', type: 'group', id: 'static-te-cta-content' %}
+</div>
+
+{% schema %}
+{
+  "name": "CTA Banner",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "full-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-3"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Banner",
+      "category": "t:categories.banners",
+      "settings": {
+        "section_width": "full-width",
+        "color_scheme": "scheme-3",
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      },
+      "blocks": {
+        "static-te-cta-content": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 20,
+            "width": "fill",
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Ready to explore?</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "alignment": "center"
+              }
+            },
+            "subtext": {
+              "type": "text",
+              "settings": {
+                "text": "<p>Discover our full collection and find something you will love.</p>",
+                "type_preset": "rte",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "center"
+              }
+            },
+            "button": {
+              "type": "button",
+              "settings": {
+                "label": "t:text_defaults.shop_now_button_label",
+                "link": "shopify://collections/all",
+                "style_class": "button"
+              }
+            }
+          },
+          "block_order": ["heading", "subtext", "button"]
+        }
+      },
+      "block_order": ["static-te-cta-content"]
+    }
+  ]
+}
+{% endschema %}

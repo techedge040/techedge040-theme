@@ -1,0 +1,145 @@
+{%- liquid
+  assign fetch_priority = 'auto'
+  if section.index == 1
+    assign fetch_priority = 'high'
+  endif
+-%}
+
+<div
+  class="te-hero__media-wrapper"
+  {{ block.shopify_attributes }}
+>
+  {%- if block.settings.media_type == 'image' -%}
+    {%- if block.settings.image != blank -%}
+      {{
+        block.settings.image
+        | image_url: width: 3840
+        | image_tag:
+          class: 'te-hero__media',
+          widths: '832, 1200, 1600, 1920, 2560, 3840',
+          sizes: '100vw',
+          alt: block.settings.image.alt,
+          loading: 'eager',
+          fetchpriority: fetch_priority
+      }}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'te-hero__media te-hero__media--placeholder' }}
+    {%- endif -%}
+  {%- elsif block.settings.media_type == 'video' -%}
+    {%- if block.settings.video != blank -%}
+      {{
+        block.settings.video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          controls: false,
+          muted: true,
+          class: 'te-hero__media',
+          playsinline: true
+      }}
+    {%- else -%}
+      {{ 'hero-apparel-1' | placeholder_svg_tag: 'te-hero__media te-hero__media--placeholder' }}
+    {%- endif -%}
+  {%- endif -%}
+
+  {%- if block.settings.toggle_overlay -%}
+    {% render 'overlay', settings: block.settings %}
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .te-hero__media-wrapper {
+    position: relative;
+    overflow: hidden;
+    min-height: inherit;
+  }
+
+  .te-hero__media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+
+  .te-hero__media--placeholder {
+    background-color: rgb(var(--color-border-rgb));
+  }
+
+  .te-hero__media--placeholder svg {
+    width: 100%;
+    height: 100%;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Background media",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "t:settings.type",
+      "options": [
+        { "value": "image", "label": "t:options.image" },
+        { "value": "video", "label": "t:options.video" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:settings.image",
+      "visible_if": "{{ block.settings.media_type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "t:settings.video",
+      "visible_if": "{{ block.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "checkbox",
+      "id": "toggle_overlay",
+      "label": "t:settings.background_overlay"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "t:settings.overlay_color",
+      "alpha": true,
+      "default": "#00000040",
+      "visible_if": "{{ block.settings.toggle_overlay }}"
+    },
+    {
+      "type": "select",
+      "id": "overlay_style",
+      "label": "t:settings.overlay_style",
+      "options": [
+        { "value": "solid", "label": "t:options.solid" },
+        { "value": "gradient", "label": "t:options.gradient" }
+      ],
+      "default": "solid",
+      "visible_if": "{{ block.settings.toggle_overlay }}"
+    },
+    {
+      "type": "select",
+      "id": "gradient_direction",
+      "label": "t:settings.gradient_direction",
+      "options": [
+        { "value": "to top", "label": "t:options.up" },
+        { "value": "to bottom", "label": "t:options.down" }
+      ],
+      "default": "to top",
+      "visible_if": "{{ block.settings.toggle_overlay and block.settings.overlay_style == 'gradient' }}"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,260 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} te-testimonials spacing-style gap-style"
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+  "
+>
+  {% content_for 'block', type: 'group', id: 'static-te-testimonials-header' %}
+  {% content_for 'block', type: '_te-testimonials-list', id: 'static-te-testimonials-list' %}
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:settings.columns",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-2"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "category": "t:categories.storytelling",
+      "settings": {
+        "columns": 3,
+        "section_width": "page-width",
+        "color_scheme": "scheme-2",
+        "gap": 32,
+        "padding-block-start": 64,
+        "padding-block-end": 64
+      },
+      "blocks": {
+        "static-te-testimonials-header": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>What our customers say</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": ["heading"]
+        },
+        "static-te-testimonials-list": {
+          "type": "_te-testimonials-list",
+          "blocks": {
+            "testimonial_1": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 16,
+                "height": "fill",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quote": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>\"Amazing quality! Exactly what I was looking for. The craftsmanship exceeded my expectations.\"</p>",
+                    "type_preset": "rte",
+                    "width": "100%"
+                  }
+                },
+                "author": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>— Sarah M.</p>",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "width": "100%"
+                  }
+                }
+              },
+              "block_order": ["quote", "author"]
+            },
+            "testimonial_2": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 16,
+                "height": "fill",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quote": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>\"Fast shipping and excellent customer service. I will definitely be ordering again!\"</p>",
+                    "type_preset": "rte",
+                    "width": "100%"
+                  }
+                },
+                "author": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>— James R.</p>",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "width": "100%"
+                  }
+                }
+              },
+              "block_order": ["quote", "author"]
+            },
+            "testimonial_3": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "space-between",
+                "gap": 16,
+                "height": "fill",
+                "inherit_color_scheme": false,
+                "color_scheme": "scheme-1",
+                "border": "solid",
+                "border_width": 1,
+                "border_opacity": 20,
+                "border_radius": 8,
+                "padding-block-start": 24,
+                "padding-block-end": 24,
+                "padding-inline-start": 24,
+                "padding-inline-end": 24
+              },
+              "blocks": {
+                "quote": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>\"Excellent value for money. I have been a loyal customer for years and they never disappoint.\"</p>",
+                    "type_preset": "rte",
+                    "width": "100%"
+                  }
+                },
+                "author": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>— Emma L.</p>",
+                    "type_preset": "h6",
+                    "font": "var(--font-body--family)",
+                    "width": "100%"
+                  }
+                }
+              },
+              "block_order": ["quote", "author"]
+            }
+          },
+          "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+        }
+      },
+      "block_order": ["static-te-testimonials-header", "static-te-testimonials-list"]
+    }
+  ]
+}
+{% endschema %}

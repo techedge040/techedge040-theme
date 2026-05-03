@@ -1,0 +1,274 @@
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="section section--{{ section.settings.section_width }} color-{{ section.settings.color_scheme }} te-features spacing-style gap-style"
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+  "
+>
+  {% content_for 'block', type: 'group', id: 'static-te-features-header' %}
+  {% content_for 'block', type: '_te-features-grid', id: 'static-te-features-grid' %}
+</div>
+
+{% schema %}
+{
+  "name": "Features",
+  "class": "section-wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "t:settings.columns",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "t:settings.width",
+      "options": [
+        { "value": "page-width", "label": "t:options.page" },
+        { "value": "full-width", "label": "t:options.full" }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "header",
+      "content": "t:content.appearance"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:settings.color_scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:content.layout"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "t:settings.gap",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Features",
+      "category": "t:categories.text",
+      "settings": {
+        "columns": 3,
+        "section_width": "page-width",
+        "color_scheme": "scheme-1",
+        "gap": 32,
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      },
+      "blocks": {
+        "static-te-features-header": {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "height": "fit",
+            "inherit_color_scheme": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Why choose us</h2>",
+                "type_preset": "h2",
+                "width": "fit-content",
+                "alignment": "center"
+              }
+            },
+            "subtext": {
+              "type": "text",
+              "settings": {
+                "text": "<p>We are committed to quality, care and craftsmanship in everything we do.</p>",
+                "type_preset": "rte",
+                "width": "fit-content",
+                "max_width": "narrow",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": ["heading", "subtext"]
+        },
+        "static-te-features-grid": {
+          "type": "_te-features-grid",
+          "blocks": {
+            "feature_1": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": { "icon": "eye", "width": 32 }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "t:html_defaults.intentional_design",
+                    "type_preset": "h4",
+                    "font": "var(--font-body--family)",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "t:html_defaults.everythings_starts_with_why",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["icon", "heading", "text"]
+            },
+            "feature_2": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": { "icon": "heart", "width": 32 }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "t:html_defaults.made_with_care_h2",
+                    "type_preset": "h4",
+                    "font": "var(--font-body--family)",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "t:html_defaults.build_better",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["icon", "heading", "text"]
+            },
+            "feature_3": {
+              "type": "group",
+              "settings": {
+                "content_direction": "column",
+                "horizontal_alignment_flex_direction_column": "center",
+                "vertical_alignment_flex_direction_column": "flex-start",
+                "gap": 12,
+                "height": "fit",
+                "inherit_color_scheme": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "icon": {
+                  "type": "icon",
+                  "settings": { "icon": "silhouette", "width": 32 }
+                },
+                "heading": {
+                  "type": "text",
+                  "settings": {
+                    "text": "t:html_defaults.team_with_goal",
+                    "type_preset": "h4",
+                    "font": "var(--font-body--family)",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                },
+                "text": {
+                  "type": "text",
+                  "settings": {
+                    "text": "t:html_defaults.real_people",
+                    "type_preset": "rte",
+                    "width": "100%",
+                    "alignment": "center"
+                  }
+                }
+              },
+              "block_order": ["icon", "heading", "text"]
+            }
+          },
+          "block_order": ["feature_1", "feature_2", "feature_3"]
+        }
+      },
+      "block_order": ["static-te-features-header", "static-te-features-grid"]
+    }
+  ]
+}
+{% endschema %}
