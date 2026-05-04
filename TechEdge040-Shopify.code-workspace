@@ -10,6 +10,9 @@
 	"settings": {
 		"claudeCode.allowDangerouslySkipPermissions": false,
 		"claudeCode.initialPermissionMode": "acceptEdits",
-		"claudeCode.preferredLocation": "sidebar"
+		"claudeCode.preferredLocation": "sidebar",
+		"claudeCode.environmentVariables": [
+			
+		]
 	}
 }
