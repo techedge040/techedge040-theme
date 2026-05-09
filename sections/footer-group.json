@@ -11,6 +11,45 @@
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
+    "te_footer_36WF9N": {
+      "type": "te-footer",
+      "blocks": {
+        "column_7q9tJY": {
+          "type": "column",
+          "settings": {
+            "heading": "Shopify",
+            "links": "Shopify webshop|Shopify Kassa (POS)|Shopify support|Koppelingen",
+            "urls": "/pages/shopify|/pages/shopify-pos|/pages/shopify-support|/pages/shopify"
+          }
+        },
+        "column_jw37km": {
+          "type": "column",
+          "settings": {
+            "heading": "Lightspeed",
+            "links": "Lightspeed webshop|Retail kassa|Lightspeed support",
+            "urls": "/pages/lightspeed|/pages/retail-kassa|/pages/lightspeed-support"
+          }
+        },
+        "column_REAVqq": {
+          "type": "column",
+          "settings": {
+            "heading": "Diensten",
+            "links": "Webshop migratie|Optimalisatie|Verbetering|Smart Commerce|AI Webshop|AI Ontwikkeling",
+            "urls": "/pages/webshop-migratie|/pages/webshop-optimalisatie|/pages/webshop-verbetering|/pages/smart-commerce|/pages/ai-webshop|/pages/ai-ontwikkeling"
+          }
+        }
+      },
+      "block_order": [
+        "column_7q9tJY",
+        "column_jw37km",
+        "column_REAVqq"
+      ],
+      "name": "TE Footer",
+      "settings": {
+        "tagline": "Jouw e-commerce partner vanuit Eindhoven. Shopify, Lightspeed, migraties, AI en meer. Persoonlijk, direct en betrokken.",
+        "show_partner_labels": true
+      }
+    },
     "17778186757db13805": {
       "type": "_blocks",
       "settings": {
@@ -43,6 +82,7 @@
     }
   },
   "order": [
+    "te_footer_36WF9N",
     "17778186757db13805"
   ]
 }
