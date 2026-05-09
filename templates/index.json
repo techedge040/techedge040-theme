@@ -162,12 +162,55 @@
         "cta_label": "Kom eens kennismaken →",
         "cta_url": ""
       }
+    },
+    "te_reviews_r9f8yG": {
+      "type": "te-reviews",
+      "blocks": {
+        "review_n9p7iy": {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "M",
+            "reviewer_name": "Marieke van den Berg",
+            "reviewer_company": "Fashion webshop, Utrecht",
+            "review_text": "Eindelijk een partij die gewoon doet wat ze beloven. Onze Shopify-webshop staat er prachtig bij en de samenwerking was heel prettig — korte lijnen, geen gedoe."
+          }
+        },
+        "review_CiaiXc": {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "T",
+            "reviewer_name": "Thomas Pieters",
+            "reviewer_company": "Sportwinkel, Eindhoven",
+            "review_text": "De migratie van ons oude systeem naar Shopify verliep vlekkeloos. Geen dataverlies, geen lange downtime. En daarna stonden ze gewoon klaar voor vervolgvragen."
+          }
+        },
+        "review_T9PpMf": {
+          "type": "review",
+          "settings": {
+            "avatar_initial": "S",
+            "reviewer_name": "Sandra Koopman",
+            "reviewer_company": "Concept store, Amsterdam",
+            "review_text": "Lightspeed POS gekoppeld aan onze webshop — nu loopt alles automatisch. Voorraad klopt altijd, klanten kunnen overal retourneren. Hadden we eerder moeten doen!"
+          }
+        }
+      },
+      "block_order": [
+        "review_n9p7iy",
+        "review_CiaiXc",
+        "review_T9PpMf"
+      ],
+      "name": "TE Reviews",
+      "settings": {
+        "chip_label": "Wat klanten zeggen",
+        "heading": "Ondernemers over <em>TechEdge040</em>"
+      }
     }
   },
   "order": [
     "te_hero_gyhcTQ",
     "te_stats_peaE73",
     "te_werkwijze_nCxVTC",
-    "te_about_Y37L9N"
+    "te_about_Y37L9N",
+    "te_reviews_r9f8yG"
   ]
 }
