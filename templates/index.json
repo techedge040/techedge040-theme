@@ -24,6 +24,7 @@
     },
     "te_hero_gyhcTQ": {
       "type": "te-hero",
+      "disabled": true,
       "name": "TE Hero",
       "settings": {
         "badge_text": "Eindhoven — heel Nederland",
@@ -38,10 +39,52 @@
         "stat2_number": "8jr",
         "stat2_label": "Ervaring"
       }
+    },
+    "te_stats_peaE73": {
+      "type": "te-stats",
+      "blocks": {
+        "stat_39ejF4": {
+          "type": "stat",
+          "settings": {
+            "number": "99+",
+            "label": "Projecten afgerond"
+          }
+        },
+        "stat_tVh6WY": {
+          "type": "stat",
+          "settings": {
+            "number": "8jr",
+            "label": "E-commerce ervaring"
+          }
+        },
+        "stat_FYKmTx": {
+          "type": "stat",
+          "settings": {
+            "number": "100%",
+            "label": "Migraties zonder verlies"
+          }
+        },
+        "stat_mmiXLQ": {
+          "type": "stat",
+          "settings": {
+            "number": "1dag",
+            "label": "Gemiddelde reactietijd"
+          }
+        }
+      },
+      "block_order": [
+        "stat_39ejF4",
+        "stat_tVh6WY",
+        "stat_FYKmTx",
+        "stat_mmiXLQ"
+      ],
+      "name": "TE Stats Bar",
+      "settings": {}
     }
   },
   "order": [
     "te_services_6aw3zB",
-    "te_hero_gyhcTQ"
+    "te_hero_gyhcTQ",
+    "te_stats_peaE73"
   ]
 }
