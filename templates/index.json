@@ -115,11 +115,59 @@
         "heading": "Jouw communicatievoorkeur. <em>Onze aanpassing.</em>",
         "lead_text": "Iedereen werkt anders. De ene ondernemer belt liever even op, de ander stuurt een appje tussendoor, sommigen willen alles netjes bijhouden in een ticketsysteem. Allemaal prima. Jij kiest hoe je contact opneemt — wij zorgen dat je altijd snel en goed geholpen wordt."
       }
+    },
+    "te_about_Y37L9N": {
+      "type": "te-about",
+      "blocks": {
+        "highlight_GmYRiP": {
+          "type": "highlight",
+          "settings": {
+            "title": "Direct contact",
+            "description": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden. Snel antwoord van mensen die jouw project kennen."
+          }
+        },
+        "highlight_hm9gL4": {
+          "type": "highlight",
+          "settings": {
+            "title": "Korte lijnen",
+            "description": "Snel schakelen, snel beslissen. Geen lange goedkeuringstrajecten of onnodige vergaderingen."
+          }
+        },
+        "highlight_LnMbDa": {
+          "type": "highlight",
+          "settings": {
+            "title": "Persoonlijk betrokken",
+            "description": "We kennen jouw business echt. We signaleren proactief kansen en zijn bereikbaar als er iets speelt."
+          }
+        },
+        "highlight_Tdr44J": {
+          "type": "highlight",
+          "settings": {
+            "title": "Eerlijk advies",
+            "description": "Geen verkooppraatjes. We vertellen je wat werkt, ook als dat betekent dat we iets afraden."
+          }
+        }
+      },
+      "block_order": [
+        "highlight_GmYRiP",
+        "highlight_hm9gL4",
+        "highlight_LnMbDa",
+        "highlight_Tdr44J"
+      ],
+      "name": "TE Over ons",
+      "settings": {
+        "chip_label": "Over TechEdge040",
+        "heading": "Wij doen wat we zeggen. <em>Altijd.</em>",
+        "body_text": "<p>TechEdge040 is een klein, hecht team van e-commerce specialisten vanuit Eindhoven. We werken al jaren samen met webshop-eigenaren die gewoon goed geholpen willen worden — zonder grote bureaustructuren of onduidelijke facturen.</p><p><strong>Wat ons anders maakt:</strong> je praat altijd rechtstreeks met ons. Geen doorverbinden, geen anoniem loket. Wij kennen jouw shop en denken proactief met je mee — ook als het project allang klaar is.</p><p>Van een eenvoudige webshop tot complexe kassaintegaties en AI-toepassingen: we hebben het allemaal al gedaan. En we doen het met plezier.</p>",
+        "cta_label": "Kom eens kennismaken →",
+        "cta_url": ""
+      }
     }
   },
   "order": [
     "te_hero_gyhcTQ",
     "te_stats_peaE73",
-    "te_werkwijze_nCxVTC"
+    "te_werkwijze_nCxVTC",
+    "te_about_Y37L9N"
   ]
 }
