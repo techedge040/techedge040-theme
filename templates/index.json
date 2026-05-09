@@ -9,19 +9,6 @@
  */
 {
   "sections": {
-    "te_services_6aw3zB": {
-      "type": "te-services",
-      "name": "TE Services",
-      "settings": {
-        "section_id": "diensten",
-        "bg_variant": "navy",
-        "chip_label": "Shopify",
-        "heading": "Shopify webshops & oplossingen",
-        "description": "Van een gloednieuwe shop tot slimme kassaintegatie — we kennen Shopify door en door en helpen je er alles uit te halen.",
-        "link_text": "Alles over Shopify",
-        "link_url": ""
-      }
-    },
     "te_hero_gyhcTQ": {
       "type": "te-hero",
       "name": "TE Hero",
@@ -79,11 +66,60 @@
       ],
       "name": "TE Stats Bar",
       "settings": {}
+    },
+    "te_werkwijze_nCxVTC": {
+      "type": "te-werkwijze",
+      "blocks": {
+        "pillar_gqLBU7": {
+          "type": "pillar",
+          "settings": {
+            "icon_emoji": "📞",
+            "title": "Direct contact, altijd",
+            "description": "Je belt, app't of mailt rechtstreeks met ons. Geen doorverbinden. Gewoon snel antwoord van mensen die jouw project door en door kennen."
+          }
+        },
+        "pillar_yfrwzc": {
+          "type": "pillar",
+          "settings": {
+            "icon_emoji": "⚡",
+            "title": "Korte lijnen, snelle beslissingen",
+            "description": "We schakelen direct. Geen eindeloze goedkeuringstrajecten. Als er iets aangepast moet worden, doen we dat gewoon."
+          }
+        },
+        "pillar_UEcq6p": {
+          "type": "pillar",
+          "settings": {
+            "icon_emoji": "🤝",
+            "title": "Persoonlijk betrokken",
+            "description": "We kennen jouw business — niet als dossier, maar echt. We signaleren proactief kansen en denken mee, ook na oplevering."
+          }
+        },
+        "pillar_Hi4NWK": {
+          "type": "pillar",
+          "settings": {
+            "icon_emoji": "💡",
+            "title": "Transparant en eerlijk",
+            "description": "Geen verkooppraatjes. We vertellen je precies wat verstandig is, ook als dat betekent dat we iets afraden."
+          }
+        }
+      },
+      "block_order": [
+        "pillar_gqLBU7",
+        "pillar_yfrwzc",
+        "pillar_UEcq6p",
+        "pillar_Hi4NWK"
+      ],
+      "name": "TE Werkwijze",
+      "settings": {
+        "chip_label": "Hoe wij werken",
+        "heading": "Jouw communicatievoorkeur. <em>Onze aanpassing.</em>",
+        "lead_text": "Iedereen werkt anders. De ene ondernemer belt liever even op, de ander stuurt een appje tussendoor, sommigen willen alles netjes bijhouden in een ticketsysteem. Allemaal prima. Jij kiest hoe je contact opneemt — wij zorgen dat je altijd snel en goed geholpen wordt."
+      }
     }
   },
   "order": [
-    "te_services_6aw3zB",
     "te_hero_gyhcTQ",
-    "te_stats_peaE73"
+    "te_stats_peaE73",
+    "te_werkwijze_nCxVTC"
   ]
 }
