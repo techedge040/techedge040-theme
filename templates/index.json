@@ -24,7 +24,6 @@
     },
     "te_hero_gyhcTQ": {
       "type": "te-hero",
-      "disabled": true,
       "name": "TE Hero",
       "settings": {
         "badge_text": "Eindhoven — heel Nederland",
@@ -53,7 +52,7 @@
         "stat_tVh6WY": {
           "type": "stat",
           "settings": {
-            "number": "8jr",
+            "number": "+9jr",
             "label": "E-commerce ervaring"
           }
         },
@@ -68,7 +67,7 @@
           "type": "stat",
           "settings": {
             "number": "1dag",
-            "label": "Gemiddelde reactietijd"
+            "label": "Gemiddelde reactietijd werkdagen"
           }
         }
       },
