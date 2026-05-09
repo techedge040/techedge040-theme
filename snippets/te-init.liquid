@@ -1,0 +1,43 @@
+<script>
+(function () {
+  function revealElements(scope) {
+    var els = (scope || document).querySelectorAll('.te-reveal:not(.te-in)');
+    if (!els.length) return;
+
+    if (window.Shopify && window.Shopify.designMode) {
+      for (var i = 0; i < els.length; i++) {
+        els[i].classList.add('te-in');
+      }
+      return;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      for (var j = 0; j < els.length; j++) {
+        els[j].classList.add('te-in');
+      }
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry, i) {
+        if (entry.isIntersecting) {
+          setTimeout(function () {
+            entry.target.classList.add('te-in');
+          }, i * 75);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    for (var k = 0; k < els.length; k++) {
+      io.observe(els[k]);
+    }
+  }
+
+  revealElements();
+
+  document.addEventListener('shopify:section:load', function (e) {
+    revealElements(e.target);
+  });
+})();
+</script>
