@@ -204,6 +204,82 @@
         "chip_label": "Wat klanten zeggen",
         "heading": "Ondernemers over <em>TechEdge040</em>"
       }
+    },
+    "te_cta_banner_8E4HaH": {
+      "type": "te-cta-banner",
+      "name": "TE CTA Banner",
+      "settings": {
+        "chip_label": "Klaar om te starten?",
+        "heading": "Jouw webshop verdient een <em>echte</em> partner",
+        "description": "Plan een vrijblijvend kennismakingsgesprek. We kijken samen naar jouw situatie en geven eerlijk advies over wat het beste past. Geen verkooppraatje, gewoon een goed gesprek.",
+        "cta_label": "Gesprek plannen →",
+        "cta_url": ""
+      }
+    },
+    "te_platforms_GAMbU8": {
+      "type": "te-platforms",
+      "blocks": {
+        "platform_RGCqgt": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "Shopify"
+          }
+        },
+        "platform_YBNY3H": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "Lightspeed"
+          }
+        },
+        "platform_AiGQRt": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "WooCommerce"
+          }
+        },
+        "platform_zPVmQq": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "WordPress"
+          }
+        },
+        "platform_Y3EDtx": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "Mollie"
+          }
+        },
+        "platform_pfF4HB": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "Klaviyo"
+          }
+        },
+        "platform_rTD8Py": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "REST & GraphQL"
+          }
+        },
+        "platform_BarqBk": {
+          "type": "platform",
+          "settings": {
+            "platform_name": "Exact Online"
+          }
+        }
+      },
+      "block_order": [
+        "platform_RGCqgt",
+        "platform_YBNY3H",
+        "platform_AiGQRt",
+        "platform_zPVmQq",
+        "platform_Y3EDtx",
+        "platform_pfF4HB",
+        "platform_rTD8Py",
+        "platform_BarqBk"
+      ],
+      "name": "TE Platforms Bar",
+      "settings": {}
     }
   },
   "order": [
@@ -211,6 +287,8 @@
     "te_stats_peaE73",
     "te_werkwijze_nCxVTC",
     "te_about_Y37L9N",
-    "te_reviews_r9f8yG"
+    "te_reviews_r9f8yG",
+    "te_cta_banner_8E4HaH",
+    "te_platforms_GAMbU8"
   ]
 }
