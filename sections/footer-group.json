@@ -11,6 +11,17 @@
   "type": "footer",
   "name": "t:names.footer",
   "sections": {
+    "custom_liquid_E4CEXN": {
+      "type": "custom-liquid",
+      "name": "t:names.custom_liquid",
+      "settings": {
+        "custom_liquid": "<script defer=\"defer\" type=\"text/javascript\" src=\"https://techedge040.odoo.com/im_livechat/loader/1\"></script>\n            \n            <script defer=\"defer\" type=\"text/javascript\" src=\"https://techedge040.odoo.com/im_livechat/assets_embed.js\"></script>",
+        "color_scheme": "scheme-1",
+        "section_width": "page-width",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
     "te_footer_36WF9N": {
       "type": "te-footer",
       "blocks": {
@@ -82,6 +93,7 @@
     }
   },
   "order": [
+    "custom_liquid_E4CEXN",
     "te_footer_36WF9N",
     "17778186757db13805"
   ]
